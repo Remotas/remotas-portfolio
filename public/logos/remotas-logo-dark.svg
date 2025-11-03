@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="80" rx="16" fill="#0b0b0b"/>
+  <g transform="translate(16,16)">
+    <circle cx="24" cy="24" r="24" fill="url(#g)"/>
+    <text x="24" y="31" text-anchor="middle" font-family="Inter,system-ui,Segoe UI" font-weight="700" font-size="22" fill="#0b0b0b">RW</text>
+    <text x="64" y="20" font-family="Inter,system-ui,Segoe UI" font-weight="700" font-size="20" fill="#e5e7eb">remotas<span fill="#93c5fd">.</span>work</text>
+    <text x="64" y="40" font-family="Inter,system-ui,Segoe UI" font-size="12" fill="#9ca3af">Desarrollo web · Soporte digital</text>
+  </g>
+</svg>

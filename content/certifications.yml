@@ -1,0 +1,27 @@
+- title: "Permiso de conducción B (España)"
+  issuer: "DGT"
+  date: "2025-09"
+  link: ""
+
+- title: "Homologación del Título de Bachiller (España)"
+  issuer: "Ministerio de Educación"
+  date: "2025-07"
+  link: "/public/pdf/Homologacion_Bachiller_Espana.pdf"
+
+- title: "IFCD0110 — Confección y Publicación de Páginas Web (360 h)"
+  issuer: "Vértice Training (NextGenerationEU)"
+  date: "2025-03"
+  link: "/public/pdf/Certificados_ES_RSK_PHP_MySQL_etc.pdf"
+
+- title: "IFCD06 — Desarrollo de Aplicaciones Web con PHP y MySQL (80 h)"
+  issuer: "Junta de Andalucía"
+  date: "2025-01"
+
+- title: "Auditoría de Seguridad Informática (INF0487) — 60 h"
+  issuer: "INFOCA"
+  date: "2024-11"
+
+- title: "Dossier técnico Venezuela (Telecom/Redes)"
+  issuer: "Varios (Ericsson, Huawei, Ceragon, UCAB, INCE, CETEPEP)"
+  date: "1998–2019"
+  link: "/public/pdf/Cursos_Venezuela_Unificado_Melquiades_Farias.pdf"

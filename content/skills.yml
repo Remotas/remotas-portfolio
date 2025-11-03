@@ -1,0 +1,30 @@
+frontend:
+  - HTML5
+  - CSS3
+  - JavaScript
+  - React (nociones)
+  - Vue.js (nociones)
+  - TailwindCSS
+backend:
+  - Node.js
+  - Express
+  - PHP
+  - MySQL
+  - MongoDB
+infraestructura:
+  - Docker
+  - Git/GitHub
+  - Linux
+  - SEO técnico
+soporte_sistemas:
+  - Redes móviles
+  - Energía/Instrumentación
+  - SAP (exposición)
+herramientas:
+  - VS Code
+  - Figma
+  - Jira
+  - ChatGPT
+idiomas:
+  - Español (nativo)
+  - Inglés (intermedio)

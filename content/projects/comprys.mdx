@@ -1,0 +1,49 @@
+---
+title: "Comprys — Plataforma e-commerce modular"
+summary: "Monorepo para ecosistema e-commerce y fintech: arquitectura modular basada en Next.js, Node/Express y MongoDB, con design system, Storybook y pipelines TurboRepo."
+tech:
+  - Next.js
+  - Node.js
+  - Express
+  - MongoDB
+  - TailwindCSS
+  - TurboRepo
+  - TypeScript
+  - Storybook
+links:
+  demo: "#"
+  repo: "https://github.com/Remotas/comprys"
+---
+
+## Descripción general
+
+**Comprys** es una plataforma e-commerce modular desarrollada como monorepo.  
+Integra aplicaciones cliente, panel administrativo y servicios API bajo una misma estructura con **Next.js 15**, **Node/Express**, y **MongoDB**.
+
+Su diseño se basa en principios de escalabilidad, mantenibilidad y reutilización de componentes, con un **design system propio** documentado en **Storybook** y gestionado mediante **Turborepo + PNPM**.
+
+## Arquitectura
+
+- **Frontend:** Next.js 15 con App Router, rutas tipadas y componentes del design-system.
+- **Backend:** API REST sobre Express.js y MongoDB (autenticación JWT, logs y middlewares).
+- **UI Kit:** tokens centralizados, theming oscuro/claro, compatibilidad con TailwindCSS.
+- **Pipeline:** Turborepo para tareas paralelas, build compartido y testing unificado.
+- **Integraciones:** Storybook 9, Testing Library, Vitest, SendGrid (emails), Twilio (SMS).
+
+## Estado actual
+
+- ✅ Auditoría técnica completada (configuración, tipos y CI/CD).
+- ✅ Implementación del sistema de tokens (colores, tipografía, espaciado, radios, sombras).
+- ✅ Integración de Storybook con workflows automáticos.
+- 🧩 En curso: validación del módulo “Operaciones” (órdenes, envíos, logs, excepciones).
+- 🧱 Próximo: publicación de instancia demo y documentación completa de componentes.
+
+## Resultados
+
+- Base sólida para ecosistema Comprys (web, admin, blog).
+- Reutilización de componentes y consistencia visual.
+- Mejora en la productividad y en la trazabilidad del código.
+
+---
+
+_“Comprys representa la base modular de un marketplace completo, combinando arquitectura moderna, tipado fuerte y procesos documentados de QA.”_
