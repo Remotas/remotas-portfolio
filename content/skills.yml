@@ -2,29 +2,37 @@ frontend:
   - HTML5
   - CSS3
   - JavaScript
+  - Next.js (base)
   - React (nociones)
-  - Vue.js (nociones)
-  - TailwindCSS
+  - Tailwind CSS
+  - WordPress
+
 backend:
   - Node.js
   - Express
-  - PHP
+  - PHP (formación)
   - MySQL
-  - MongoDB
+  - MongoDB (proyectos)
+  - REST APIs (consumo)
+
 infraestructura:
-  - Docker
-  - Git/GitHub
-  - Linux
-  - SEO técnico
+  - Git / GitHub
+  - Linux (uso técnico)
+  - Docker (nociones)
+  - SEO técnico (base)
+
 soporte_sistemas:
-  - Redes móviles
-  - Energía/Instrumentación
-  - SAP (exposición)
+  - Redes móviles (GSM/UMTS/LTE)
+  - Microondas / Radioenlaces
+  - Documentación técnica
+  - QA asistido con IA
+
 herramientas:
   - VS Code
-  - Figma
-  - Jira
-  - ChatGPT
+  - Figma (lectura y handoff)
+  - Jira / Kanban
+  - ChatGPT / IA aplicada
+
 idiomas:
   - Español (nativo)
-  - Inglés (intermedio)
+  - Inglés (intermedio técnico)

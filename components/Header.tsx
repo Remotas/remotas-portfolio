@@ -1,9 +1,12 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import type { Route } from "next";
 
-const NAV = [
+// declaramos que cada href es una Route de Next
+const NAV: { href: Route; label: string }[] = [
   { href: "/", label: "Inicio" },
   { href: "/projects", label: "Proyectos" },
   { href: "/experience", label: "Experiencia" },
@@ -14,6 +17,7 @@ const NAV = [
 
 export default function Header() {
   const pathname = usePathname();
+
   return (
     <header className="border-b border-neutral-200 dark:border-neutral-800">
       <nav className="container flex items-center justify-between py-4">
@@ -21,16 +25,16 @@ export default function Header() {
           Melquiades Farías
         </Link>
         <ul className="flex gap-4 text-sm">
-          {NAV.map((i) => (
-            <li key={i.href}>
+          {NAV.map((item) => (
+            <li key={item.href}>
               <Link
-                href={i.href}
+                href={item.href}
                 className={clsx(
                   "px-2 py-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800",
-                  pathname === i.href && "bg-neutral-100 dark:bg-neutral-800"
+                  pathname === item.href && "bg-neutral-100 dark:bg-neutral-800"
                 )}
               >
-                {i.label}
+                {item.label}
               </Link>
             </li>
           ))}

@@ -1,0 +1,18 @@
+# Forzar LF en todo el código fuente
+* text=auto eol=lf
+
+# Archivos binarios (no tocar saltos de línea)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.gif binary
+*.pdf binary
+*.zip binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+
+# Mantener CRLF solo en archivos específicos de Windows (opcional)
+*.bat text eol=crlf
+*.ps1 text eol=crlf
