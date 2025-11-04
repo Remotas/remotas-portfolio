@@ -1,32 +1,29 @@
-- company: Remotas Work
+- company: "Remotas Work"
   period: "2023 — Actualidad"
   role: "Desarrollador Web / Soporte Digital (Freelance)"
+  summary_es: "Desarrollo y soporte de sitios, documentación técnica asistida por IA y organización de contenidos."
+  summary_en: "Web development, digital support and AI-assisted technical documentation."
   bullets:
-    - Desarrollo y soporte de sitios y paneles (HTML/CSS/JS, WordPress).
-    - "Proyecto Comprys: monorepo Next.js + Node/Express + MongoDB (privado)."
-    - "CV Digital Interactivo (ES/EN) con descarga PDF."
-    - "Bot de Trading: scripts de automatización (Python, Docker, logs/entornos)."
-    - Documentación técnica y QA asistidos con IA.
-    - "Gestión de hosting, dominios y copias de seguridad (cPanel, FTP)."
-    - "Optimización SEO inicial, estructura semántica y rendimiento."
-    - "Adaptación responsive (desktop, tablet, móvil) y documentación técnica en GitHub."
-    - "Uso de herramientas IA para depuración, documentación y mejora de código."
+    - Desarrollo y soporte de sitios y paneles (HTML, CSS, JavaScript, Next.js, WordPress).
+    - Proyecto interno “Comprys”: monorepo Next.js + Node/Express + MongoDB (privado).
+    - Documentación técnica, guías de uso y QA asistidos con IA (entregables en PDF).
+    - Trabajo remoto con énfasis en orden, bitácora y versionado.
 
-- company: Movilnet (Telecom VE)
+- company: "Movilnet (Telecom VE)"
   period: "2008 — 2016"
   role: "Supervisor de Redes Móviles"
+  summary_es: "Operación y mantenimiento de infraestructura GSM/UMTS/LTE."
+  summary_en: "Operation and maintenance of mobile network infrastructure."
   bullets:
-    - "Supervisión operativa de redes móviles GSM/UMTS/LTE y coordinación de equipos técnicos."
-    - "Mantenimiento preventivo y correctivo de estaciones base, enlaces y sistemas de energía."
-    - "Planificación y seguimiento de actividades mediante SAP."
-    - "Control de grupos electrógenos y bancos de baterías."
-    - "Reportes técnicos y comunicación con soporte de red y gestión."
-    - "Cursos: Ericsson MINI-LINK, Huawei BTS, Ceragon, Voz IP (UCAB)."
+    - O&M de infraestructura GSM/UMTS/LTE; enlaces de microondas y equipos Ericsson / Huawei / Ceragon.
+    - Coordinación de cuadrillas técnicas y reporte de incidentes.
+    - Cursos: Ericsson MINI-LINK, Huawei BTS, Voz IP (UCAB).
 
-- company: Inter Telecomunicaciones
+- company: "Inter Telecomunicaciones"
   period: "2007 — 2008"
   role: "Técnico de Redes HFC"
+  summary_es: "Instalación y soporte de redes coaxiales/híbridas y clientes residenciales."
+  summary_en: "Installation and support of HFC networks and residential customers."
   bullets:
-    - "Instalación y soporte de redes coaxiales/híbridas y clientes residenciales."
-    - "Configuración, diagnóstico y resolución de fallos técnicos."
-    - "Soporte en campo con instrumentación especializada."
+    - Instalación, medición y soporte en redes HFC.
+    - Atención técnica a clientes residenciales y documentación básica.
