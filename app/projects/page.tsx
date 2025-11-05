@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 
 export default function Projects() {
@@ -15,13 +16,16 @@ export default function Projects() {
     });
 
   return (
-    <>
-      <h1 className="text-2xl font-semibold mb-6">Proyectos</h1>
-      <div className="grid md:grid-cols-2 gap-6">
-        {posts.map((p) => (
-          <ProjectCard key={p.slug} {...p} />
-        ))}
+    <main className="min-h-screen bg-slate-950 pb-12 pt-8">
+      <div className="mx-auto max-w-6xl px-4">
+        <Section title="Proyectos" headingLevel="h1" className="mt-0">
+          <div className="grid gap-6 md:grid-cols-2">
+            {posts.map((p) => (
+              <ProjectCard key={p.slug} {...p} />
+            ))}
+          </div>
+        </Section>
       </div>
-    </>
+    </main>
   );
 }

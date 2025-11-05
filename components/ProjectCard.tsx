@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function ProjectCard({
   title,
   summary,
@@ -14,29 +12,39 @@ export default function ProjectCard({
   repo?: string;
 }) {
   return (
-    <article className="border rounded-2xl p-4 hover:shadow">
-      <h3 className="text-lg font-semibold">{title}</h3>
-      <p className="my-2 opacity-80">{summary}</p>
-      <div className="flex flex-wrap gap-2 my-3">
+    <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-slate-100 shadow-sm transition hover:shadow-lg hover:shadow-slate-900/40">
+      <h3 className="text-lg font-semibold text-slate-100">{title}</h3>
+      <p className="my-2 text-sm text-slate-300">{summary}</p>
+      <div className="my-3 flex flex-wrap gap-2">
         {tech?.map((t) => (
           <span
             key={t}
-            className="text-xs px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800"
+            className="rounded-full bg-slate-800 px-2 py-1 text-xs text-slate-200"
           >
             {t}
           </span>
         ))}
       </div>
-      <div className="flex gap-3 text-sm">
+      <div className="flex gap-3 text-sm text-blue-400">
         {demo && (
-          <Link href={demo} className="underline">
+          <a
+            href={demo}
+            className="underline hover:text-blue-300"
+            target="_blank"
+            rel="noreferrer"
+          >
             Demo
-          </Link>
+          </a>
         )}
         {repo && (
-          <Link href={repo} className="underline">
+          <a
+            href={repo}
+            className="underline hover:text-blue-300"
+            target="_blank"
+            rel="noreferrer"
+          >
             Repo
-          </Link>
+          </a>
         )}
       </div>
     </article>

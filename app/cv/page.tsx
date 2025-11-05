@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Section from "@/components/Section";
 
 export default function CV() {
   const files = [
@@ -13,24 +13,27 @@ export default function CV() {
     },
   ];
   return (
-    <>
-      <h1 className="text-2xl font-semibold mb-6">Currículum</h1>
-      <ul className="space-y-3">
-        {files.map((f) => (
-          <li
-            key={f.href}
-            className="border rounded-2xl p-4 flex items-center justify-between"
-          >
-            <span>{f.name}</span>
-            <Link
-              href={f.href}
-              className="rounded-2xl bg-brand px-3 py-1 text-white"
-            >
-              Descargar
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </>
+    <main className="min-h-screen bg-slate-950 pb-12 pt-8">
+      <div className="mx-auto max-w-6xl px-4">
+        <Section title="Currículum" headingLevel="h1" className="mt-0">
+          <ul className="space-y-4">
+            {files.map((f) => (
+              <li
+                key={f.href}
+                className="flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-900/70 p-5 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <span className="text-slate-100">{f.name}</span>
+                <a
+                  href={f.href}
+                  className="inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-500"
+                >
+                  Descargar
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      </div>
+    </main>
   );
 }

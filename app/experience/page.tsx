@@ -1,6 +1,7 @@
 import YAML from "yaml";
 import { readFileSync } from "fs";
 import path from "path";
+import Section from "@/components/Section";
 import Timeline from "@/components/Timeline";
 
 export default function Experience() {
@@ -16,9 +17,12 @@ export default function Experience() {
   }
 
   return (
-    <>
-      <h1 className="text-2xl font-semibold mb-6">Experiencia</h1>
-      <Timeline items={data} />
-    </>
+    <main className="min-h-screen bg-slate-950 pb-12 pt-8">
+      <div className="mx-auto max-w-6xl px-4">
+        <Section title="Experiencia" headingLevel="h1" className="mt-0">
+          <Timeline items={data} />
+        </Section>
+      </div>
+    </main>
   );
 }
