@@ -4,6 +4,7 @@ import path from "path";
 import YAML from "yaml";
 import Section from "@/components/Section";
 import Timeline from "@/components/Timeline";
+import { themeTokens } from "@/theme/tokens";
 
 function getExperience() {
   const file = fs.readFileSync(
@@ -17,7 +18,9 @@ export default function ExperiencePage() {
   const data = getExperience();
 
   return (
-    <main className="min-h-screen bg-slate-950 pb-12 pt-8">
+    <main
+      className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}
+    >
       <div className="mx-auto max-w-6xl px-4 space-y-6">
         <Section id="experience" title="Experiencia" headingLevel="h1">
           <Timeline items={data} />

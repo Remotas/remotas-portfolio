@@ -4,6 +4,7 @@ import Section from "@/components/Section";
 import SkillGrid from "@/components/SkillGrid";
 import RotatingInfo from "@/components/RotatingInfo";
 import AboutCarousel from "@/components/AboutCarousel";
+import { themeTokens } from "@/theme/tokens";
 import fs from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
@@ -137,8 +138,17 @@ export default async function Home({
   // helper para mantener ?lang=en en los enlaces
   const withLang = (p: string) => (lang === "en" ? `${p}?lang=en` : p);
 
+  const cardContainer = [
+    themeTokens.cardRadius,
+    themeTokens.cardBorder,
+    themeTokens.cardBg,
+    themeTokens.cardPadding,
+  ].join(" ");
+
   return (
-    <main className="min-h-screen bg-slate-950 pb-12 pt-8">
+    <main
+      className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}
+    >
       {/* hero */}
       <div className="max-w-6xl mx-auto px-4 md:px-8 lg:px-0 pt-10 flex flex-col lg:flex-row gap-8">
         {/* columna izquierda (hero) */}
@@ -195,8 +205,10 @@ export default async function Home({
         {/* columna derecha */}
         <aside className="space-y-4">
           {/* selector de idioma */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
-            <p className="text-sm text-slate-100 mb-2">
+          <div className={cardContainer}>
+            <p
+              className={`text-sm ${themeTokens.headingColor} mb-2`}
+            >
               {ui.sidebar.langTitle}
             </p>
             <div className="flex gap-2">
@@ -224,8 +236,10 @@ export default async function Home({
           </div>
 
           {/* accesos rápidos */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 space-y-2">
-            <h2 className="text-sm font-semibold text-slate-100">
+          <div className={`${cardContainer} space-y-2`}>
+            <h2
+              className={`text-sm font-semibold ${themeTokens.headingColor}`}
+            >
               {ui.sidebar.quickTitle}
             </h2>
             <ul className="space-y-1 text-sm text-slate-200">
@@ -248,8 +262,10 @@ export default async function Home({
           </div>
 
           {/* disponibilidad */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 space-y-1 text-sm text-slate-200">
-            <h2 className="text-sm font-semibold text-slate-100">
+          <div className={`${cardContainer} space-y-1 text-sm text-slate-200`}>
+            <h2
+              className={`text-sm font-semibold ${themeTokens.headingColor}`}
+            >
               {ui.sidebar.availabilityTitle}
             </h2>
             <p>{ui.sidebar.availabilityText}</p>
@@ -259,8 +275,10 @@ export default async function Home({
           <RotatingInfo lang={lang} />
 
           {/* stack principal */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 space-y-3">
-            <h2 className="text-sm font-semibold text-slate-100">
+          <div className={`${cardContainer} space-y-3`}>
+            <h2
+              className={`text-sm font-semibold ${themeTokens.headingColor}`}
+            >
               {ui.sidebar.stackTitle}
             </h2>
             <p className="text-sm text-slate-200">{ui.sidebar.stackDesc}</p>

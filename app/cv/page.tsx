@@ -1,5 +1,6 @@
 // app/cv/page.tsx
 import Section from "@/components/Section";
+import { themeTokens } from "@/theme/tokens";
 
 export default function CvPage() {
   const files = [
@@ -18,7 +19,9 @@ export default function CvPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-slate-950 pb-12 pt-8">
+    <main
+      className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}
+    >
       <div className="mx-auto max-w-6xl px-4 space-y-6">
         <Section id="cv" title="Currículum" headingLevel="h1">
           <p className="text-slate-200 mb-4">
@@ -28,9 +31,9 @@ export default function CvPage() {
             {files.map((f) => (
               <div
                 key={f.href}
-                className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/40 px-4 py-3"
+                className={`flex items-center justify-between ${themeTokens.cardRadius} ${themeTokens.cardBorder} bg-slate-900/40 px-4 py-3`}
               >
-                <span className="text-slate-100">{f.name}</span>
+                <span className={themeTokens.headingColor}>{f.name}</span>
                 <a
                   href={f.href}
                   className="inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-1.5 text-sm font-medium text-white transition hover:bg-blue-500"
