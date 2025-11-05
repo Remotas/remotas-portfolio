@@ -1,5 +1,6 @@
 // components/Section.tsx
 import React from "react";
+import { themeTokens } from "@/theme/tokens";
 
 type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
@@ -23,10 +24,12 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`rounded-2xl border border-slate-800 bg-slate-900/70 p-5 ${className}`}
+      className={`${themeTokens.cardRadius} ${themeTokens.cardBorder} ${themeTokens.cardBg} ${themeTokens.cardPadding} ${className}`}
     >
       {title ? (
-        <HeadingTag className="text-xl font-semibold mb-4 text-slate-100">
+        <HeadingTag
+          className={`text-xl font-semibold mb-4 ${themeTokens.headingColor}`}
+        >
           {title}
         </HeadingTag>
       ) : null}

@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import YAML from "yaml";
 import Section from "@/components/Section";
+import { themeTokens } from "@/theme/tokens";
 
 function getContact() {
   const file = fs.readFileSync(
@@ -21,16 +22,18 @@ export default function ContactPage() {
   const c = getContact();
 
   return (
-    <main className="min-h-screen bg-slate-950 pb-12 pt-8">
+    <main
+      className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}
+    >
       <div className="mx-auto max-w-6xl px-4 space-y-6">
         <Section id="contact" title="Contacto" headingLevel="h1">
           <p className="text-slate-200 mb-4">
             Puedes escribirme por correo o por las redes técnicas.
           </p>
-          <div className="space-y-3 text-sm text-slate-100">
+          <div className={`space-y-3 text-sm ${themeTokens.headingColor}`}>
             {c.email ? (
               <div className="flex items-center gap-2">
-                <span className="text-slate-400 w-24">Email</span>
+                <span className={`${themeTokens.mutedColor} w-24`}>Email</span>
                 <a
                   href={`mailto:${c.email}`}
                   className="text-blue-400 hover:text-blue-300 underline"
@@ -41,7 +44,7 @@ export default function ContactPage() {
             ) : null}
             {c.linkedin ? (
               <div className="flex items-center gap-2">
-                <span className="text-slate-400 w-24">LinkedIn</span>
+                <span className={`${themeTokens.mutedColor} w-24`}>LinkedIn</span>
                 <a
                   href={c.linkedin}
                   className="text-blue-400 hover:text-blue-300 underline"
@@ -54,7 +57,7 @@ export default function ContactPage() {
             ) : null}
             {c.github ? (
               <div className="flex items-center gap-2">
-                <span className="text-slate-400 w-24">GitHub</span>
+                <span className={`${themeTokens.mutedColor} w-24`}>GitHub</span>
                 <a
                   href={c.github}
                   className="text-blue-400 hover:text-blue-300 underline"
@@ -67,7 +70,7 @@ export default function ContactPage() {
             ) : null}
             {c.location ? (
               <div className="flex items-center gap-2">
-                <span className="text-slate-400 w-24">Ubicación</span>
+                <span className={`${themeTokens.mutedColor} w-24`}>Ubicación</span>
                 <span>{c.location}</span>
               </div>
             ) : null}

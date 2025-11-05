@@ -4,6 +4,7 @@ import path from "path";
 import matter from "gray-matter";
 import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
+import { themeTokens } from "@/theme/tokens";
 
 function getProjects() {
   const dir = path.join(process.cwd(), "content/projects");
@@ -26,7 +27,9 @@ export default function ProjectsPage() {
   const projects = getProjects();
 
   return (
-    <main className="min-h-screen bg-slate-950 pb-12 pt-8">
+    <main
+      className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}
+    >
       <div className="mx-auto max-w-6xl px-4 space-y-6">
         <Section id="projects" title="Proyectos" headingLevel="h1">
           <div className="grid gap-4 md:grid-cols-2">

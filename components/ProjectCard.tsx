@@ -1,5 +1,7 @@
 // components/ProjectCard.tsx
 
+import { themeTokens } from "@/theme/tokens";
+
 interface ProjectCardProps {
   title: string;
   summary?: string;
@@ -16,7 +18,9 @@ export default function ProjectCard({
   demo,
 }: ProjectCardProps) {
   return (
-    <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-slate-100 shadow-sm">
+    <article
+      className={`${themeTokens.cardRadius} ${themeTokens.cardBorder} ${themeTokens.cardBg} ${themeTokens.cardPadding} ${themeTokens.headingColor} ${themeTokens.shadowSm}`}
+    >
       <h3 className="text-lg font-semibold">{title}</h3>
       {summary ? (
         <p className="mt-2 text-slate-300 text-sm">{summary}</p>
