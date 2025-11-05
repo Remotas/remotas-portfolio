@@ -1,24 +1,28 @@
-import YAML from "yaml";
-import { readFileSync } from "fs";
+// app/experience/page.tsx
+import fs from "fs";
 import path from "path";
+import YAML from "yaml";
+import Section from "@/components/Section";
 import Timeline from "@/components/Timeline";
 
-export default function Experience() {
-  const file = path.join(process.cwd(), "content/experience.yml");
-  const raw = readFileSync(file, "utf8");
-  let data: any = YAML.parse(raw);
+function getExperience() {
+  const file = fs.readFileSync(
+    path.join(process.cwd(), "content/experience.yml"),
+    "utf8"
+  );
+  return YAML.parse(file);
+}
 
-  // Normaliza a array aunque viniera como objeto:
-  if (!Array.isArray(data)) {
-    data = Object.values(data ?? {})
-      .flatMap((v: any) => (Array.isArray(v) ? v : [v]))
-      .filter(Boolean);
-  }
+export default function ExperiencePage() {
+  const data = getExperience();
 
   return (
-    <>
-      <h1 className="text-2xl font-semibold mb-6">Experiencia</h1>
-      <Timeline items={data} />
-    </>
+    <main className="min-h-screen bg-slate-950 pb-12 pt-8">
+      <div className="mx-auto max-w-6xl px-4 space-y-6">
+        <Section id="experience" title="Experiencia" headingLevel="h1">
+          <Timeline items={data} />
+        </Section>
+      </div>
+    </main>
   );
 }

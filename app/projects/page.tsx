@@ -1,27 +1,41 @@
+// app/projects/page.tsx
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 
-export default function Projects() {
+function getProjects() {
   const dir = path.join(process.cwd(), "content/projects");
-  const posts = fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith(".mdx"))
-    .map((f) => {
-      const raw = fs.readFileSync(path.join(dir, f), "utf8");
-      const { data } = matter(raw);
-      return { slug: f.replace(".mdx", ""), ...data } as any;
+  const files = fs.readdirSync(dir);
+
+  return files
+    .filter((f) => f.endsWith(".mdx") || f.endsWith(".md"))
+    .map((fileName) => {
+      const raw = fs.readFileSync(path.join(dir, fileName), "utf8");
+      const { data, content } = matter(raw);
+      return {
+        slug: fileName.replace(/\.mdx?$/, ""),
+        ...data,
+        content,
+      } as any;
     });
+}
+
+export default function ProjectsPage() {
+  const projects = getProjects();
 
   return (
-    <>
-      <h1 className="text-2xl font-semibold mb-6">Proyectos</h1>
-      <div className="grid md:grid-cols-2 gap-6">
-        {posts.map((p) => (
-          <ProjectCard key={p.slug} {...p} />
-        ))}
+    <main className="min-h-screen bg-slate-950 pb-12 pt-8">
+      <div className="mx-auto max-w-6xl px-4 space-y-6">
+        <Section id="projects" title="Proyectos" headingLevel="h1">
+          <div className="grid gap-4 md:grid-cols-2">
+            {projects.map((p: any) => (
+              <ProjectCard key={p.slug} {...p} />
+            ))}
+          </div>
+        </Section>
       </div>
-    </>
+    </main>
   );
 }
