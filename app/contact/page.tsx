@@ -4,6 +4,7 @@ import path from "path";
 import YAML from "yaml";
 import Section from "@/components/Section";
 import { themeTokens } from "@/theme/tokens";
+import ContactForm from "./ContactForm";
 
 function getContact() {
   const file = fs.readFileSync(
@@ -74,6 +75,12 @@ export default function ContactPage() {
                 <span>{c.location}</span>
               </div>
             ) : null}
+          </div>
+          <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+            <h2 className="text-lg font-semibold text-slate-100 mb-4">
+              Envíame un mensaje
+            </h2>
+            <ContactForm />
           </div>
         </Section>
       </div>
