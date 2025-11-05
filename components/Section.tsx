@@ -1,28 +1,36 @@
-import { ReactNode } from "react";
-import { marked } from "marked";
+// components/Section.tsx
+import React from "react";
+
+type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
+interface SectionProps {
+  id?: string;
+  title?: string;
+  headingLevel?: HeadingLevel;
+  className?: string;
+  children: React.ReactNode;
+}
 
 export default function Section({
   id,
   title,
+  headingLevel = "h2",
+  className = "",
   children,
-  markdown,
-}: {
-  id?: string;
-  title: string;
-  children?: ReactNode;
-  markdown?: string;
-}) {
+}: SectionProps) {
+  const HeadingTag = headingLevel;
+
   return (
-    <section id={id} className="mt-16">
-      <h2 className="text-2xl font-semibold mb-4">{title}</h2>
-      {markdown ? (
-        <article
-          className="prose dark:prose-invert"
-          dangerouslySetInnerHTML={{ __html: marked(markdown) }}
-        />
-      ) : (
-        children
-      )}
+    <section
+      id={id}
+      className={`rounded-2xl border border-slate-800 bg-slate-900/70 p-5 ${className}`}
+    >
+      {title ? (
+        <HeadingTag className="text-xl font-semibold mb-4 text-slate-100">
+          {title}
+        </HeadingTag>
+      ) : null}
+      {children}
     </section>
   );
 }
