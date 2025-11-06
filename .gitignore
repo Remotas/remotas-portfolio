@@ -1,14 +1,26 @@
-# dependencies
-node_modules
-.pnp.*
+# deps
+/node_modules
+/.pnp
+.pnp.js
+
 # next
-.next
-out
+.next/
+out/
+dist/
+
 # logs
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-# misc
-.DS_Store
+
+# env
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# editor
+.vscode/
+.DS_Store

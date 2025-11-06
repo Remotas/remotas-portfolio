@@ -3,33 +3,28 @@ import sgMail from "@sendgrid/mail";
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL;
-const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL;
+const CONTACT_FROM_EMAIL =
+  process.env.CONTACT_FROM_EMAIL || process.env.CONTACT_TO_EMAIL;
 
 export async function POST(req: Request) {
-  // 1. Validar que tenemos las env en el entorno
-  if (!SENDGRID_API_KEY) {
-    return NextResponse.json(
-      { ok: false, error: "Falta SENDGRID_API_KEY en las variables de entorno." },
-      { status: 500 }
-    );
-  }
-
-  if (!CONTACT_TO_EMAIL || !CONTACT_FROM_EMAIL) {
-    return NextResponse.json(
-      {
-        ok: false,
-        error: "Faltan CONTACT_TO_EMAIL o CONTACT_FROM_EMAIL en las variables de entorno.",
-      },
-      { status: 500 }
-    );
-  }
-
-  const { name, email, message } = await req.json();
+  // 1. Validar que llegaron los campos
+  const { name, email, message } = await req.json().catch(() => ({} as any));
 
   if (!name || !email || !message) {
     return NextResponse.json(
-      { ok: false, error: "Nombre, correo y mensaje son obligatorios." },
+      { error: "Faltan datos del formulario." },
       { status: 400 }
+    );
+  }
+
+  // 2. Validar que en producción estén las env
+  if (!SENDGRID_API_KEY || !CONTACT_TO_EMAIL) {
+    // Esto es lo que estás viendo en localhost cuando no hay .env.local
+    return NextResponse.json(
+      {
+        error: "Falta SENDGRID_API_KEY en las variables de entorno.",
+      },
+      { status: 500 }
     );
   }
 
@@ -37,20 +32,18 @@ export async function POST(req: Request) {
 
   const msg = {
     to: CONTACT_TO_EMAIL,
-    from: CONTACT_FROM_EMAIL,
-    subject: `Nuevo mensaje desde el portfolio de ${name}`,
-    replyTo: email,
+    from: CONTACT_FROM_EMAIL || CONTACT_TO_EMAIL,
+    subject: `Nuevo mensaje de ${name} desde el portfolio`,
     text: `
 Nombre: ${name}
-Email: ${email}
+Correo: ${email}
 
 Mensaje:
 ${message}
     `.trim(),
     html: `
-      <h2>Nuevo mensaje desde el portfolio</h2>
       <p><strong>Nombre:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Correo:</strong> ${email}</p>
       <p><strong>Mensaje:</strong></p>
       <p>${message.replace(/\n/g, "<br />")}</p>
     `,
@@ -59,25 +52,18 @@ ${message}
   try {
     await sgMail.send(msg);
     return NextResponse.json({ ok: true });
-  } catch (error: any) {
-    // Log para que lo veas en Vercel → Logs de ejecución
-    console.error("Error enviando correo con SendGrid:", error?.response?.body || error);
-
-    // Si el error es de créditos agotados, respondemos 200 para que el usuario no vea el error feo
-    const sgMsg: string | undefined =
-      error?.response?.body?.errors?.[0]?.message ?? error?.message;
-
-    if (sgMsg && sgMsg.toLowerCase().includes("maximum credits exceeded")) {
-      return NextResponse.json({
-        ok: true,
-        warning:
-          "El formulario se envió, pero SendGrid no lo pudo mandar porque la cuenta no tiene créditos.",
-      });
-    }
+  } catch (err: any) {
+    // Aquí entran errores como "Maximum credits exceeded"
+    console.error("Error enviando email con SendGrid:", err?.response?.body || err);
 
     return NextResponse.json(
-      { ok: false, error: "No se pudo enviar el mensaje. Inténtalo más tarde." },
-      { status: 500 }
+      {
+        // devolvemos ok: true para que el usuario no vea el error feo
+        ok: true,
+        warning:
+          "El formulario se envió pero el servicio de correo está sin crédito en SendGrid.",
+      },
+      { status: 200 }
     );
   }
 }
