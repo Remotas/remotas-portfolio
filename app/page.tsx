@@ -150,7 +150,7 @@ export default async function Home({
       className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}
     >
       {/* hero */}
-      <div className="max-w-6xl mx-auto px-4 md:px-8 lg:px-0 pt-10 flex flex-col lg:flex-row gap-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-10 flex flex-col gap-8 lg:flex-row">
         {/* columna izquierda (hero) */}
         <div className="flex-1 space-y-8">
           <header className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -165,11 +165,11 @@ export default async function Home({
                 />
               </div>
               <div className="space-y-2">
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-50">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-50">
                   {ui.title}
                 </h1>
                 <p className="text-slate-300 max-w-xl">{ui.subtitle}</p>
-                <div className="flex gap-3 pt-1">
+                <div className="flex flex-wrap gap-3 pt-1">
                   <a
                     href={withLang("/cv")}
                     className="rounded-full bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-500 transition"
@@ -190,7 +190,7 @@ export default async function Home({
       </div>
 
       {/* layout de 2 columnas */}
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px] gap-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-6 grid gap-6 md:grid-cols-2">
         {/* columna izquierda */}
         <div className="space-y-10">
           {/* aquí metemos el carrusel con Sobre mí / Filosofía */}

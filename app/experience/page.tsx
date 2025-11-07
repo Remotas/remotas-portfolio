@@ -21,7 +21,7 @@ export default function ExperiencePage() {
     <main
       className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}
     >
-      <div className="mx-auto max-w-6xl px-4 space-y-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-6">
         <Section id="experience" title="Experiencia" headingLevel="h1">
           <Timeline items={data} />
         </Section>
