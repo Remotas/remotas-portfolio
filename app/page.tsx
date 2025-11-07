@@ -9,6 +9,15 @@ import fs from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
 
+export const metadata = {
+  title: "Inicio",
+  description:
+    "Presentación, sobre mí, filosofía de trabajo y habilidades de Melquiades Farías. Portfolio bilingüe con acceso rápido a proyectos, certificaciones y contacto.",
+  alternates: {
+    canonical: "/",
+  },
+};
+
 // ────────────────────────────────────────────
 // helpers para leer markdown con dos idiomas
 // ────────────────────────────────────────────
@@ -138,6 +147,7 @@ export default async function Home({
   // helper para mantener ?lang=en en los enlaces
   const withLang = (p: string) => (lang === "en" ? `${p}?lang=en` : p);
 
+  // para reutilizar el mismo estilo de tarjeta en la columna derecha
   const cardContainer = [
     themeTokens.cardRadius,
     themeTokens.cardBorder,
@@ -146,16 +156,17 @@ export default async function Home({
   ].join(" ");
 
   return (
-    <main
-      className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}
-    >
+    <main className={`min-h-screen ${themeTokens.backgroundBase} pb-12`}>
       {/* hero */}
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-10 flex flex-col gap-8 lg:flex-row">
-        {/* columna izquierda (hero) */}
-        <div className="flex-1 space-y-8">
-          <header className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-center gap-6">
-              <div className="relative h-40 w-32 md:h-48 md:w-36 rounded-3xl overflow-hidden bg-slate-800">
+      <div className="mx-auto max-w-6xl px-4 pt-8">
+        {/* layout de 2 columnas */}
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+          {/* columna izquierda */}
+          <div className="space-y-8">
+            <header
+              className={`${cardContainer} flex flex-col gap-6 lg:flex-row lg:items-center`}
+            >
+              <div className="relative h-32 w-32 md:h-36 md:w-36 rounded-3xl overflow-hidden bg-slate-800">
                 <Image
                   src="/avatar.jpg"
                   alt="Melquiades Farías"
@@ -165,7 +176,7 @@ export default async function Home({
                 />
               </div>
               <div className="space-y-2">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-50">
+                <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-50">
                   {ui.title}
                 </h1>
                 <p className="text-slate-300 max-w-xl">{ui.subtitle}</p>
@@ -184,123 +195,136 @@ export default async function Home({
                   </a>
                 </div>
               </div>
-            </div>
-          </header>
-        </div>
-      </div>
+            </header>
 
-      {/* layout de 2 columnas */}
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-6 grid gap-6 md:grid-cols-2">
-        {/* columna izquierda */}
-        <div className="space-y-10">
-          {/* aquí metemos el carrusel con Sobre mí / Filosofía */}
-          <AboutCarousel lang={lang} />
-
-          {/* Habilidades */}
-          <Section id="skills" title={ui.skillsTitle}>
-            <SkillGrid skills={skills} />
-          </Section>
-        </div>
-
-        {/* columna derecha */}
-        <aside className="space-y-4">
-          {/* selector de idioma */}
-          <div className={cardContainer}>
-            <p
-              className={`text-sm ${themeTokens.headingColor} mb-2`}
+            {/* sobre mí + filosofía en forma de secciones */}
+            <Section
+              id="about"
+              title={lang === "en" ? "About me" : "Sobre mí"}
+              headingLevel="h2"
             >
-              {ui.sidebar.langTitle}
-            </p>
-            <div className="flex gap-2">
-              <a
-                href="/?lang=es"
-                className={`flex-1 rounded-lg py-2 text-center text-sm font-medium ${
-                  lang === "es"
-                    ? "bg-blue-600 text-white"
-                    : "bg-slate-800 text-slate-200"
-                }`}
+              <div className="space-y-3 leading-relaxed text-slate-200">
+                {renderParagraphs(aboutMd)}
+              </div>
+            </Section>
+
+            <Section
+              id="philosophy"
+              title={lang === "en" ? "Work philosophy" : "Filosofía de trabajo"}
+              headingLevel="h2"
+            >
+              <div className="space-y-3 leading-relaxed text-slate-200">
+                {renderParagraphs(philosophyMd)}
+              </div>
+            </Section>
+
+            <Section id="skills" title={ui.skillsTitle} headingLevel="h2">
+              <SkillGrid skills={skills} />
+            </Section>
+          </div>
+
+          {/* columna derecha */}
+          <aside className="space-y-4">
+            {/* selector de idioma */}
+            <div className={cardContainer}>
+              <h2
+                className={`text-sm font-semibold ${themeTokens.headingColor}`}
               >
-                ES
-              </a>
-              <a
-                href="/?lang=en"
-                className={`flex-1 rounded-lg py-2 text-center text-sm font-medium ${
-                  lang === "en"
-                    ? "bg-blue-600 text-white"
-                    : "bg-slate-800 text-slate-200"
-                }`}
-              >
-                EN
-              </a>
-            </div>
-          </div>
-
-          {/* accesos rápidos */}
-          <div className={`${cardContainer} space-y-2`}>
-            <h2
-              className={`text-sm font-semibold ${themeTokens.headingColor}`}
-            >
-              {ui.sidebar.quickTitle}
-            </h2>
-            <ul className="space-y-1 text-sm text-slate-200">
-              <li>
-                <a href={withLang("/cv")} className="hover:text-white">
-                  {ui.sidebar.quickCv}
-                </a>
-              </li>
-              <li>
-                <a href={withLang("/projects")} className="hover:text-white">
-                  {ui.sidebar.quickProjects}
-                </a>
-              </li>
-              <li>
-                <a href={withLang("/contact")} className="hover:text-white">
-                  {ui.sidebar.quickContact}
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* disponibilidad */}
-          <div className={`${cardContainer} space-y-1 text-sm text-slate-200`}>
-            <h2
-              className={`text-sm font-semibold ${themeTokens.headingColor}`}
-            >
-              {ui.sidebar.availabilityTitle}
-            </h2>
-            <p>{ui.sidebar.availabilityText}</p>
-          </div>
-
-          {/* tarjetas que rotan */}
-          <RotatingInfo lang={lang} />
-
-          {/* stack principal */}
-          <div className={`${cardContainer} space-y-3`}>
-            <h2
-              className={`text-sm font-semibold ${themeTokens.headingColor}`}
-            >
-              {ui.sidebar.stackTitle}
-            </h2>
-            <p className="text-sm text-slate-200">{ui.sidebar.stackDesc}</p>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Next.js",
-                "React",
-                "Node.js",
-                "Tailwind",
-                "MongoDB",
-                "Express",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-100"
+                {ui.sidebar.langTitle}
+              </h2>
+              <div className="mt-3 flex gap-2">
+                <a
+                  href="/"
+                  className={`flex-1 rounded-lg py-2 text-center text-sm font-medium ${
+                    lang === "es"
+                      ? "bg-blue-600 text-white"
+                      : "bg-slate-800 text-slate-200"
+                  }`}
                 >
-                  {item}
-                </span>
-              ))}
+                  ES
+                </a>
+                <a
+                  href="/?lang=en"
+                  className={`flex-1 rounded-lg py-2 text-center text-sm font-medium ${
+                    lang === "en"
+                      ? "bg-blue-600 text-white"
+                      : "bg-slate-800 text-slate-200"
+                  }`}
+                >
+                  EN
+                </a>
+              </div>
             </div>
-          </div>
-        </aside>
+
+            {/* accesos rápidos */}
+            <div className={`${cardContainer} space-y-2`}>
+              <h2
+                className={`text-sm font-semibold ${themeTokens.headingColor}`}
+              >
+                {ui.sidebar.quickTitle}
+              </h2>
+              <ul className="space-y-1 text-sm text-slate-200">
+                <li>
+                  <a href={withLang("/cv")} className="hover:text-white">
+                    {ui.sidebar.quickCv}
+                  </a>
+                </li>
+                <li>
+                  <a href={withLang("/projects")} className="hover:text-white">
+                    {ui.sidebar.quickProjects}
+                  </a>
+                </li>
+                <li>
+                  <a href={withLang("/contact")} className="hover:text-white">
+                    {ui.sidebar.quickContact}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* disponibilidad */}
+            <div
+              className={`${cardContainer} space-y-1 text-sm text-slate-200`}
+            >
+              <h2
+                className={`text-sm font-semibold ${themeTokens.headingColor}`}
+              >
+                {ui.sidebar.availabilityTitle}
+              </h2>
+              <p>{ui.sidebar.availabilityText}</p>
+            </div>
+
+            {/* tarjetas que rotan */}
+            <RotatingInfo lang={lang} />
+
+            {/* stack principal */}
+            <div className={`${cardContainer} space-y-3`}>
+              <h2
+                className={`text-sm font-semibold ${themeTokens.headingColor}`}
+              >
+                {ui.sidebar.stackTitle}
+              </h2>
+              <p className="text-sm text-slate-200">{ui.sidebar.stackDesc}</p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Next.js",
+                  "React",
+                  "Node.js",
+                  "Tailwind",
+                  "MongoDB",
+                  "Express",
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-100"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
 
       <footer className="border-t border-slate-900/70 mt-10 py-6 text-center text-sm text-slate-500">

@@ -5,6 +5,15 @@ import YAML from "yaml";
 import Section from "@/components/Section";
 import { themeTokens } from "@/theme/tokens";
 
+export const metadata = {
+  title: "Certificaciones",
+  description:
+    "Certificaciones y cursos técnicos completados, con enlace al detalle cuando está disponible.",
+  alternates: {
+    canonical: "/certifications",
+  },
+};
+
 function getCertifications() {
   const file = fs.readFileSync(
     path.join(process.cwd(), "content/certifications.yml"),
@@ -22,9 +31,7 @@ export default function CertificationsPage() {
   const certs = getCertifications();
 
   return (
-    <main
-      className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}
-    >
+    <main className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-6">
         <Section id="certifications" title="Certificaciones" headingLevel="h1">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

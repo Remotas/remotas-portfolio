@@ -6,6 +6,15 @@ import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import { themeTokens } from "@/theme/tokens";
 
+export const metadata = {
+  title: "Proyectos",
+  description:
+    "Proyectos personales y de clientes documentados: stack, alcance y enlaces.",
+  alternates: {
+    canonical: "/projects",
+  },
+};
+
 function getProjects() {
   const dir = path.join(process.cwd(), "content/projects");
   const files = fs.readdirSync(dir);
@@ -27,9 +36,7 @@ export default function ProjectsPage() {
   const projects = getProjects();
 
   return (
-    <main
-      className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}
-    >
+    <main className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-6">
         <Section id="projects" title="Proyectos" headingLevel="h1">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

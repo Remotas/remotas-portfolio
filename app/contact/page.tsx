@@ -2,7 +2,12 @@
 import ContactForm from "./ContactForm";
 
 export const metadata = {
-  title: "Contacto – Melquiades Farías",
+  title: "Contacto",
+  description:
+    "Formulario de contacto y datos directos de Melquiades Farías: correo, LinkedIn y ubicación.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {
