@@ -35,7 +35,7 @@ export default function ContactPage() {
                 <dt className="text-slate-400">LinkedIn</dt>
                 <dd>
                   <a
-                    href="https://www.linkedin.com/in/melquiadesfarias/"
+                    href="https://www.linkedin.com/in/remotas-work/"
                     target="_blank"
                     rel="noreferrer"
                     className="text-sky-300 hover:underline"
