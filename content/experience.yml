@@ -1,29 +1,66 @@
-- company: "Remotas Work"
-  period: "2023 — Actualidad"
-  role: "Desarrollador Web / Soporte Digital (Freelance)"
-  summary_es: "Desarrollo y soporte de sitios, documentación técnica asistida por IA y organización de contenidos."
-  summary_en: "Web development, digital support and AI-assisted technical documentation."
-  bullets:
-    - Desarrollo y soporte de sitios y paneles (HTML, CSS, JavaScript, Next.js, WordPress).
-    - Proyecto interno “Comprys”: monorepo Next.js + Node/Express + MongoDB (privado).
-    - Documentación técnica, guías de uso y QA asistidos con IA (entregables en PDF).
-    - Trabajo remoto con énfasis en orden, bitácora y versionado.
+# Experiencia profesional alineada con el perfil de LinkedIn,
+# pero en formato plano para que React no reciba objetos.
 
-- company: "Movilnet (Telecom VE)"
-  period: "2008 — 2016"
-  role: "Supervisor de Redes Móviles"
-  summary_es: "Operación y mantenimiento de infraestructura GSM/UMTS/LTE."
-  summary_en: "Operation and maintenance of mobile network infrastructure."
-  bullets:
-    - O&M de infraestructura GSM/UMTS/LTE; enlaces de microondas y equipos Ericsson / Huawei / Ceragon.
-    - Coordinación de cuadrillas técnicas y reporte de incidentes.
-    - Cursos: Ericsson MINI-LINK, Huawei BTS, Voz IP (UCAB).
+- id: remotas-work
+  period: "2020-03 – actual"
+  role: "Desarrollador Web Freelance | Soporte Digital & Sistemas / Freelance Web Developer"
+  company: "Remotas Work"
+  location: "Córdoba, España (remoto)"
+  highlights:
+    - "Desarrollo de sitios y portafolios con HTML, CSS, Tailwind, Next.js y WordPress. / Built websites and portfolios with modern stack."
+    - "Gestión técnica de dominios, hosting, backups y SEO técnico. / Technical management of domains, hosting, backups and SEO."
+    - "Integración de APIs y servicios (Node.js, MongoDB, REST). / API and service integrations (Node.js, MongoDB, REST)."
+    - "Control de versiones y despliegue con Git/GitHub y Vercel. / Version control and deployments with Git/GitHub and Vercel."
+    - "Documentación clara para clientes y equipos. / Clear, client-friendly documentation."
+    - "Proyecto destacado: ecosistema e-commerce/fintech en monorepo (TurboRepo + Next.js 15 + MongoDB). / Featured project: e-commerce/fintech monorepo."
 
-- company: "Inter Telecomunicaciones"
-  period: "2007 — 2008"
-  role: "Técnico de Redes HFC"
-  summary_es: "Instalación y soporte de redes coaxiales/híbridas y clientes residenciales."
-  summary_en: "Installation and support of HFC networks and residential customers."
-  bullets:
-    - Instalación, medición y soporte en redes HFC.
-    - Atención técnica a clientes residenciales y documentación básica.
+- id: movilnet-supervisor
+  period: "2008-07 – 2016-11"
+  role: "Supervisor de Redes Móviles / Mobile Network Supervisor"
+  company: "Movilnet"
+  location: "Lechería, Anzoátegui, Venezuela"
+  highlights:
+    - "Supervisión de infraestructura móvil (GSM, UMTS, LTE) garantizando continuidad del servicio. / Supervised mobile infrastructure ensuring uptime."
+    - "Coordinación de contratistas y proveedores, planificación en SAP y control de SLAs. / Coordination with contractors/vendors and SAP-based planning."
+    - "Diagnóstico y resolución de fallos críticos en radio bases, energía y transmisión. / Diagnosis and resolution of critical faults."
+    - "Reducción cercana al 30% en tiempos de respuesta ante incidencias. / ~30% reduction in incident response time."
+
+- id: inter-hfc
+  period: "2007-03 – 2008-03"
+  role: "Técnico de Redes HFC / HFC Network Technician"
+  company: "Inter Telecom"
+  location: "Lechería, Anzoátegui, Venezuela"
+  highlights:
+    - "Mantenimiento preventivo y correctivo de redes HFC (CATV e Internet). / Preventive and corrective maintenance of HFC networks."
+    - "Configuración de amplificadores, nodos ópticos y equipos de medición. / Configured amplifiers, optical nodes and measurement devices."
+    - "Reducción del 20% en reincidencia de fallos en el sector asignado. / 20% reduction in recurring failures."
+
+- id: movilnet-rbs
+  period: "2005-08 – 2007-03"
+  role: "Supervisor de Radio Bases (Contratista) / Radio Base Station Supervisor (Contractor)"
+  company: "Movilnet"
+  location: "Anzoátegui, Venezuela"
+  highlights:
+    - "Operación y mantenimiento de estaciones base (energía, transmisión, climatización). / Operation and maintenance of BTS sites."
+    - "Coordinación de cuadrillas de campo y aplicación de protocolos de seguridad. / Coordinated field teams and enforced safety procedures."
+    - "Documentación estandarizada de operaciones de campo. / Standardized field operation documentation."
+
+- id: cantv-lab
+  period: "2005-02 – 2005-07"
+  role: "Practicante / Técnico de Laboratorio de Electrónica / Electronics Lab Intern"
+  company: "CANTV"
+  location: "Puerto La Cruz, Venezuela"
+  highlights:
+    - "Reparación de placas electrónicas y equipos de telecomunicaciones. / Repair of electronic boards and telecom devices."
+    - "Soporte al área de mantenimiento de red y control de calidad. / Support to maintenance and QA teams."
+    - "Mejora del proceso de diagnóstico reduciendo tiempos de reparación. / Improved diagnostics, reducing repair time."
+
+- id: coniraca-energy
+  period: "2002-02 – 2005-01"
+  role: "Técnico de Sistemas de Energía (Contratista) / Power Systems Technician (Contractor)"
+  company: "Coniraca (para CANTV y Movilnet)"
+  location: "Lechería, Venezuela"
+  highlights:
+    - "Mantenimiento de bancos de baterías, rectificadores, inversores y generadores para radio bases. / Maintained power systems for BTS sites."
+    - "Instalación de sistemas de energía para nodos de transmisión. / Installed power systems for transmission nodes."
+    - "Cumplimiento del 100% de los mantenimientos preventivos durante 3 años. / 100% preventive maintenance compliance for 3 years."

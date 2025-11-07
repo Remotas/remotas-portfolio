@@ -1,33 +1,42 @@
-- title: "CV Remoto — Desarrollo Web"
-  issuer: "Remotas Work"
-  date: "2025-11"
-  link: "/pdf/Melquiades_Farias_CV_Remoto_DesarrolloWeb.pdf"
-  lang: "es"
+# Certificaciones, homologaciones y cursos relevantes
 
-- title: "CV Express — Perfil Técnico"
-  issuer: "Remotas Work"
-  date: "2025-11"
-  link: "/pdf/Melquiades_Farias_CV_Express.pdf"
-  lang: "es"
-
-- title: "IFCD0110 — Confección y Publicación de Páginas Web (360 h)"
-  issuer: "Vértice Training (NextGenerationEU)"
-  date: "2025-03"
-  link: "/pdf/Certificados_ES_RSK_PHP_MySQL_etc.pdf"
-
-- title: "IFCD06 — Desarrollo de Aplicaciones Web con PHP y MySQL (80 h)"
-  issuer: "Junta de Andalucía"
-  date: "2025-01"
-
-- title: "Auditoría de Seguridad Informática (INF0487) — 60 h"
-  issuer: "INFOCA"
-  date: "2024-11"
-
-- title: "Dossier técnico telecomunicaciones (VE)"
-  issuer: "Ericsson, Huawei, Ceragon, UCAB, INCE, CETEPEP"
-  date: "1998–2019"
-  link: "/pdf/Cursos_Venezuela_Unificado_Melquiades_Farias.pdf"
-
-- title: "Permiso de conducción B (España)"
-  issuer: "DGT"
+- title: "Permiso de conducción B (España) / Category B Driving Licence (Spain)"
+  issuer: "Dirección General de Tráfico (DGT)"
   date: "2025-09"
+  description: "Movilidad plena dentro de España y UE. / Full mobility across Spain and the EU."
+
+- title: "Homologación al título de Bachiller (España) / Official recognition of Upper Secondary Education (Spain)"
+  issuer: "Ministerio de Educación, FP y Deportes"
+  date: "2025-07"
+  credential_id: "CSV: 880885995993185343827079"
+  description: "Reconocimiento académico oficial en España. / Official academic recognition in Spain."
+
+- title: "IFCD0110 – Confección y Publicación de Páginas Web (360 h)"
+  issuer: "Vértice Training – Reskilling & Upskilling 2024 – NextGenerationEU"
+  date: "2025-03"
+  description: "HTML5, CSS3, JavaScript, accesibilidad, SEO y seguridad web. / HTML5, CSS3, JavaScript, accessibility, SEO and web security."
+
+- title: "Desarrollo de Aplicaciones Web con PHP y MySQL (IFCD06) – 80 h"
+  issuer: "Junta de Andalucía – Consejería de Empleo, Empresa y Trabajo Autónomo"
+  date: "2025-01"
+  description: "PHP, MySQL, CRUD, sesiones y buenas prácticas. / PHP, MySQL, CRUD, sessions and best practices."
+
+- title: "Auditoría de Seguridad Informática (INF0487) – 60 h"
+  issuer: "INFOCA Formación, Andalucía"
+  date: "2024-11"
+  description: "Análisis de vulnerabilidades, hardening y publicación segura. / Vulnerability assessment, hardening and secure publishing."
+
+- title: "UF1307 – Seguridad en la publicación de páginas web"
+  issuer: "NextGenerationEU"
+  date: "2024-10"
+  description: "Protección frente a XSS, inyección y CSRF. / Security guidelines against common web vulnerabilities."
+
+- title: "UF1306 – Publicación de páginas web"
+  issuer: "NextGenerationEU"
+  date: "2024-10"
+  description: "Procedimientos de publicación y control de versiones. / Publishing procedures and version control."
+
+- title: "UF1305 – Integración de componentes (JavaScript)"
+  issuer: "NextGenerationEU"
+  date: "2024-10"
+  description: "JS para DOM, eventos y componentes interactivos. / JS for DOM, events and interactive components."

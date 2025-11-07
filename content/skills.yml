@@ -1,38 +1,43 @@
+# Habilidades organizadas para el portfolio
+# Formato que espera el componente: objeto -> array de strings
+
 frontend:
-  - HTML5
-  - CSS3
-  - JavaScript
-  - Next.js (base)
-  - React (nociones)
-  - Tailwind CSS
-  - WordPress
+  - "HTML5"
+  - "CSS3 / Tailwind CSS"
+  - "JavaScript"
+  - "Next.js (base)"
+  - "React (nociones)"
+  - "WordPress (themes, forms)"
 
 backend:
-  - Node.js
-  - Express
-  - PHP (formación)
-  - MySQL
-  - MongoDB (proyectos)
-  - REST APIs (consumo)
+  - "Node.js"
+  - "Express.js"
+  - "PHP (formación)"
+  - "MySQL"
+  - "MongoDB (proyectos)"
+  - "REST APIs"
 
 infraestructura:
-  - Git / GitHub
-  - Linux (uso técnico)
-  - Docker (nociones)
-  - SEO técnico (base)
+  - "Git / GitHub"
+  - "Vercel deploys"
+  - "Linux (uso técnico)"
+  - "Docker (nociones)"
+  - "SEO técnico"
+  - "Dominios y hosting"
 
-soporte_sistemas:
-  - Redes móviles (GSM/UMTS/LTE)
-  - Microondas / Radioenlaces
-  - Documentación técnica
-  - QA asistido con IA
+sistemas_y_telecom:
+  - "Redes móviles (GSM / UMTS / LTE)"
+  - "Radio bases y energía"
+  - "HFC / CATV"
+  - "Documentación técnica"
+  - "QA asistido con IA"
 
 herramientas:
-  - VS Code
-  - Figma (lectura y handoff)
-  - Jira / Kanban
-  - ChatGPT / IA aplicada
+  - "Jira / Kanban"
+  - "Storybook"
+  - "ChatGPT / IA aplicada"
+  - "SAP (planificación técnica)"
 
 idiomas:
-  - Español (nativo)
-  - Inglés (intermedio técnico)
+  - "Español (nativo)"
+  - "Inglés (intermedio técnico)"
