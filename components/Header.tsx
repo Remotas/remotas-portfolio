@@ -20,11 +20,11 @@ export default function Header() {
 
   return (
     <header className="border-b border-neutral-200 dark:border-neutral-800">
-      <nav className="container flex items-center justify-between py-4">
+      <nav className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3 py-4 md:flex-nowrap">
         <Link href="/" className="font-semibold">
           Melquiades Farías
         </Link>
-        <ul className="flex gap-4 text-sm">
+        <ul className="flex flex-wrap items-center gap-2 text-sm md:gap-4">
           {NAV.map((item) => (
             <li key={item.href}>
               <Link

@@ -21,6 +21,11 @@ export default function Section({
 }: SectionProps) {
   const HeadingTag = headingLevel;
 
+  const headingClass =
+    headingLevel === "h1" || headingLevel === "h2"
+      ? `text-2xl sm:text-3xl lg:text-4xl font-bold ${themeTokens.headingColor}`
+      : `text-xl font-semibold ${themeTokens.headingColor}`;
+
   return (
     <section
       id={id}
@@ -28,7 +33,7 @@ export default function Section({
     >
       {title ? (
         <HeadingTag
-          className={`text-xl font-semibold mb-4 ${themeTokens.headingColor}`}
+          className={`${headingClass} mb-4`}
         >
           {title}
         </HeadingTag>
