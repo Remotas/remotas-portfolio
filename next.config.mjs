@@ -1,3 +1,5 @@
+// C:\Users\melqu\remotas-portfolio\next.config.mjs
+
 import createMDX from "@next/mdx";
 import remarkGfm from "remark-gfm";
 
@@ -10,7 +12,15 @@ const withMDX = createMDX({
 const nextConfig = {
   experimental: { typedRoutes: true },
   pageExtensions: ["ts", "tsx", "mdx"],
-  // Para GitHub Pages (opcional):
+  webpack: (config) => {
+    // Permitir importar archivos .yml / .yaml
+    config.module.rules.push({
+      test: /\.ya?ml$/i,
+      use: "js-yaml-loader",
+    });
+    return config;
+  },
+  // Si en algún momento vuelves a GitHub Pages:
   // output: "export",
   // images: { unoptimized: true },
   // basePath: process.env.NEXT_BASE_PATH || "",
