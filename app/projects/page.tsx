@@ -19,7 +19,7 @@ function getProjects() {
   const dir = path.join(process.cwd(), "content/projects");
   const files = fs.readdirSync(dir);
 
-  return files
+  const projects = files
     .filter((f) => f.endsWith(".mdx") || f.endsWith(".md"))
     .map((fileName) => {
       const raw = fs.readFileSync(path.join(dir, fileName), "utf8");
@@ -30,6 +30,14 @@ function getProjects() {
         content,
       } as any;
     });
+
+  // ordenar por fecha si existe
+  return projects.sort((a, b) => {
+    if (a.date && b.date) {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    }
+    return a.title.localeCompare(b.title);
+  });
 }
 
 export default function ProjectsPage() {

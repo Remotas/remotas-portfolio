@@ -1,8 +1,11 @@
 ---
 title: "Comprys — Plataforma e-commerce modular"
-summary: "Monorepo para ecosistema e-commerce y fintech: arquitectura modular basada en Next.js, Node/Express y MongoDB, con design system, Storybook y pipelines TurboRepo."
+slug: "comprys-platform"
+summary: "Monorepo para un ecosistema e-commerce/fintech con frontend en Next.js 15, backend Node/Express y design system compartido. Incluye panel de operaciones, Storybook y pipelines con TurboRepo."
+date: "2025-10-20"
+role: "Product & Tech Lead"
 tech:
-  - Next.js
+  - Next.js 15
   - Node.js
   - Express
   - MongoDB
@@ -13,37 +16,45 @@ tech:
 links:
   demo: "#"
   repo: "https://github.com/Remotas/comprys"
+  docs: "#"
+status: "in-progress"
 ---
 
-## Descripción general
+## Descripción
 
-**Comprys** es una plataforma e-commerce modular desarrollada como monorepo.  
-Integra aplicaciones cliente, panel administrativo y servicios API bajo una misma estructura con **Next.js 15**, **Node/Express**, y **MongoDB**.
+Comprys es una plataforma pensada para operar múltiples tiendas y servicios digitales desde un **mismo monorepo**, compartiendo componentes UI, tokens de diseño, configuración de build y documentación. La idea central es que web, admin y otros frontends se alimenten del mismo design system.
 
-Su diseño se basa en principios de escalabilidad, mantenibilidad y reutilización de componentes, con un **design system propio** documentado en **Storybook** y gestionado mediante **Turborepo + PNPM**.
+## Alcance funcional
 
-## Arquitectura
+- Panel de administración con módulo **Operaciones** (órdenes, envíos, logs, excepciones).
+- Integración de **Storybook** para documentar los componentes de `packages/ui`.
+- Estructura de **monorepo con TurboRepo** para orquestar apps y packages.
+- Base para conectar con un backend Node/Express + MongoDB.
 
-- **Frontend:** Next.js 15 con App Router, rutas tipadas y componentes del design-system.
-- **Backend:** API REST sobre Express.js y MongoDB (autenticación JWT, logs y middlewares).
-- **UI Kit:** tokens centralizados, theming oscuro/claro, compatibilidad con TailwindCSS.
-- **Pipeline:** Turborepo para tareas paralelas, build compartido y testing unificado.
-- **Integraciones:** Storybook 9, Testing Library, Vitest, SendGrid (emails), Twilio (SMS).
+## Rol y aportes
 
-## Estado actual
+- Definición de la estructura del monorepo (apps + packages).
+- Normalización de componentes base (Button, Input, Card, Navbar, Sidebar).
+- Centralización de tokens de diseño (`colors`, `radius`, `spacing`) para consumo por otras apps.
+- Documentación de flujos y auditorías periódicas (checklist global de Comprys).
 
-- ✅ Auditoría técnica completada (configuración, tipos y CI/CD).
-- ✅ Implementación del sistema de tokens (colores, tipografía, espaciado, radios, sombras).
-- ✅ Integración de Storybook con workflows automáticos.
-- 🧩 En curso: validación del módulo “Operaciones” (órdenes, envíos, logs, excepciones).
-- 🧱 Próximo: publicación de instancia demo y documentación completa de componentes.
+## Stack técnico
+
+- Frontend: **Next.js 15 (App Router)** + TailwindCSS + shadcn/ui.
+- Backend previsto: **Node.js / Express** + MongoDB.
+- Monorepo: **TurboRepo** con pnpm.
+- Documentación visual: **Storybook**.
+- Lenguaje: **TypeScript**.
+
+## Estado del proyecto
+
+- ✅ Design system base y tokens centralizados.
+- ✅ Storybook conectado y con workflows.
+- 🟡 Validación del módulo “Operaciones” (quedan 5 submódulos por revisar).
+- 🧱 Próximo: publicar instancia demo + documentación completa de componentes.
 
 ## Resultados
 
-- Base sólida para ecosistema Comprys (web, admin, blog).
-- Reutilización de componentes y consistencia visual.
-- Mejora en la productividad y en la trazabilidad del código.
-
----
-
-_“Comprys representa la base modular de un marketplace completo, combinando arquitectura moderna, tipado fuerte y procesos documentados de QA.”_
+- Base sólida para escalar la plataforma.
+- Reutilización real de componentes entre apps.
+- Menos configuración duplicada gracias al monorepo.

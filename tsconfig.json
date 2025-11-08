@@ -24,10 +24,11 @@
     "esModuleInterop": true
   },
   "include": [
-    "**/*.mdx",
+    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next-env.d.ts",
+    "app/**/*.mdx",
+    "content/projects/**/*.mdx",
     ".next/types/**/*.ts",
     "types/**/*.d.ts"
   ],
