@@ -6,55 +6,83 @@ type HeroProps = {
 };
 
 export default function Hero({ lang }: HeroProps) {
-  // pon aquí el nombre del archivo que SÍ tienes en /public
-  const photoSrc = "/profile.jpg"; // cambia a /melquiades.jpg o como lo tengas
+  // ajusta este nombre según el archivo real que tengas en /public
+  const photoSrc = "/profile.jpg";
 
-  const title =
+  const heroContent =
     lang === "es"
-      ? "Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital"
-      : "Melquiades Farías — Web Developer | Technology & Digital Support";
-
-  const subtitle =
-    lang === "es"
-      ? "14+ años de experiencia técnica. Desarrollo web moderno, soporte, documentación y QA con apoyo de IA."
-      : "14+ years of technical experience. Modern web development, support, documentation and AI-assisted QA.";
-
-  const primaryBtn =
-    lang === "es" ? "Ver / Descargar CV" : "View / Download CV";
-  const secondaryBtn = lang === "es" ? "Ver proyectos" : "View projects";
+      ? {
+          name: "Melquiades Farías",
+          headline: "Desarrollador web · soporte digital y sistemas",
+          line1:
+            "14+ años de base técnica (telecom) + stack actual: HTML, CSS, JS, WordPress, Next.js.",
+          line2:
+            "Trabajo remoto y documentado: entregables claros, código limpio y seguimiento.",
+          primaryBtn: "Ver / descargar CV",
+          secondaryBtn: "Ver proyectos",
+          cvHref: "/cv",
+          projectsHref: "/projects",
+        }
+      : {
+          name: "Melquiades Farías",
+          headline: "Web developer · digital & systems support",
+          line1:
+            "14+ years of technical background (telecom) + modern web stack: HTML, CSS, JS, WordPress, Next.js.",
+          line2: "Remote-ready, documented and maintainable work.",
+          primaryBtn: "View / download CV",
+          secondaryBtn: "View projects",
+          cvHref: "/cv?lang=en",
+          projectsHref: "/projects?lang=en",
+        };
 
   return (
-    <header className="bg-slate-900/70 rounded-3xl p-8 flex gap-6 items-center">
-      {/* bloque de la foto */}
-      <div className="w-28 h-56 rounded-3xl overflow-hidden bg-slate-800 flex-shrink-0 relative">
+    <header className="bg-slate-900/70 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center md:items-stretch">
+      {/* Foto / avatar */}
+      <div className="w-28 h-28 md:w-32 md:h-auto md:min-h-56 rounded-3xl overflow-hidden bg-slate-800 flex-shrink-0 relative">
         <Image
           src={photoSrc}
-          alt="Foto de Melquiades Farías"
+          alt={
+            lang === "es"
+              ? "Foto de Melquiades Farías"
+              : "Photo of Melquiades Farías"
+          }
           fill
           className="object-cover"
           priority
         />
       </div>
 
-      {/* textos */}
-      <div className="flex-1 space-y-4">
-        <h1 className="text-3xl md:text-4xl font-bold leading-tight">
-          {title}
-        </h1>
-        <p className="text-slate-200 max-w-2xl">{subtitle}</p>
+      {/* Texto principal */}
+      <div className="flex-1 space-y-4 text-left">
+        {/* Nombre como pequeño label arriba */}
+        <p className="text-sm uppercase tracking-wide text-slate-200/80">
+          {heroContent.name}
+        </p>
 
-        <div className="flex flex-wrap gap-3">
+        {/* Headline principal */}
+        <h1 className="text-3xl md:text-4xl font-bold leading-tight text-white">
+          {heroContent.headline}
+        </h1>
+
+        {/* Líneas descriptivas */}
+        <div className="space-y-1 text-slate-100/90">
+          <p className="max-w-2xl">{heroContent.line1}</p>
+          <p className="max-w-2xl">{heroContent.line2}</p>
+        </div>
+
+        {/* CTA */}
+        <div className="flex flex-wrap gap-3 pt-2">
           <a
-            href={lang === "es" ? "/cv" : "/cv?lang=en"}
-            className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2.5 rounded-full text-sm font-medium"
+            href={heroContent.cvHref}
+            className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors"
           >
-            {primaryBtn}
+            {heroContent.primaryBtn}
           </a>
           <a
-            href={lang === "es" ? "/projects" : "/projects?lang=en"}
-            className="border border-slate-500 hover:border-slate-300 text-white px-5 py-2.5 rounded-full text-sm font-medium"
+            href={heroContent.projectsHref}
+            className="border border-slate-500 hover:border-slate-300 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors"
           >
-            {secondaryBtn}
+            {heroContent.secondaryBtn}
           </a>
         </div>
       </div>
