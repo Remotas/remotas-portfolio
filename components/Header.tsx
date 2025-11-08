@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import clsx from "clsx";
-import type { Route } from "next";
+import Image from "next/image";
+import type { ReactNode } from "react";
 
-// declaramos que cada href es una Route de Next
-const NAV: { href: Route; label: string }[] = [
+/**
+ * Menú de navegación principal del portfolio.
+ */
+const NAV: Array<{ href: string; label: string }> = [
   { href: "/", label: "Inicio" },
   { href: "/projects", label: "Proyectos" },
   { href: "/experience", label: "Experiencia" },
@@ -15,31 +16,64 @@ const NAV: { href: Route; label: string }[] = [
   { href: "/contact", label: "Contacto" },
 ];
 
-export default function Header() {
-  const pathname = usePathname();
-
+/**
+ * Wrapper para <Link> compatible con typed routes.
+ */
+function NavLink({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <header className="border-b border-neutral-200 dark:border-neutral-800">
-      <nav className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3 py-4 md:flex-nowrap">
-        <Link href="/" className="font-semibold">
-          Melquiades Farías
+    <Link
+      href={href as any}
+      className="rounded-full px-3 py-1.5 transition hover:bg-slate-900/50"
+    >
+      {children}
+    </Link>
+  );
+}
+
+/**
+ * Encabezado principal con logo ampliado, marca y navegación.
+ */
+export default function Header() {
+  return (
+    <header className="sticky top-0 z-40 border-b border-slate-900/60 bg-slate-950/80 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3">
+        {/* Marca */}
+        <Link href="/" className="flex items-center gap-4">
+          {/* Modo oscuro → logo claro */}
+          <Image
+            src="/logos/remotas-mark-light.svg"
+            alt="Remotas Work"
+            width={48}
+            height={48}
+            className="hidden dark:block"
+            priority
+          />
+          {/* Modo claro → logo oscuro */}
+          <Image
+            src="/logos/remotas-mark-dark.svg"
+            alt="Remotas Work"
+            width={48}
+            height={48}
+            className="dark:hidden"
+            priority
+          />
+          <span className="text-base font-semibold text-slate-100 leading-tight">
+            Remotas Work
+            <span className="ml-1 block text-xs text-slate-400">
+              Melquiades Farías
+            </span>
+          </span>
         </Link>
-        <ul className="flex flex-wrap items-center gap-2 text-sm md:gap-4">
+
+        {/* Navegación */}
+        <nav className="flex gap-5 text-sm text-slate-100">
           {NAV.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className={clsx(
-                  "px-2 py-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800",
-                  pathname === item.href && "bg-neutral-100 dark:bg-neutral-800"
-                )}
-              >
-                {item.label}
-              </Link>
-            </li>
+            <NavLink key={item.href} href={item.href}>
+              {item.label}
+            </NavLink>
           ))}
-        </ul>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 }
