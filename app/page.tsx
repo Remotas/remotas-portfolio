@@ -1,26 +1,23 @@
 // app/page.tsx
-import Image from "next/image";
-import Section from "@/components/Section";
-import SkillGrid from "@/components/SkillGrid";
-import RotatingInfo from "@/components/RotatingInfo";
-import AboutCarousel from "@/components/AboutCarousel";
-import { themeTokens } from "@/theme/tokens";
 import fs from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
+import Hero from "@/components/Hero";
+import SkillGrid from "@/components/SkillGrid";
+import RotatingInfo from "@/components/RotatingInfo";
+import HomeAccordion from "@/components/HomeAccordion";
+import { themeTokens } from "@/theme/tokens";
 
 export const metadata = {
   title: "Inicio",
   description:
-    "Presentación, sobre mí, filosofía de trabajo y habilidades de Melquiades Farías. Portfolio bilingüe con acceso rápido a proyectos, certificaciones y contacto.",
+    "Presentación de Melquiades Farías (Remotas Work): hero, accesos rápidos y contenido en acordeones. Portfolio bilingüe.",
   alternates: {
     canonical: "/",
   },
 };
 
-// ────────────────────────────────────────────
-// helpers para leer markdown con dos idiomas
-// ────────────────────────────────────────────
+// helpers markdown
 function removeFrontmatter(md: string) {
   if (md.startsWith("---")) {
     const end = md.indexOf("---", 3);
@@ -33,8 +30,6 @@ function removeFrontmatter(md: string) {
 
 function getMdByLang(md: string, lang: "es" | "en") {
   const clean = removeFrontmatter(md);
-
-  // tus .md tenían los marcadores ## ES / ## EN
   const markerEs = "## ES";
   const markerEn = "## EN";
 
@@ -53,7 +48,6 @@ function getMdByLang(md: string, lang: "es" | "en") {
   return finalText;
 }
 
-// para justificar párrafos cuando haga falta
 function renderParagraphs(md: string) {
   return md
     .split(/\n\s*\n/)
@@ -68,19 +62,15 @@ function renderParagraphs(md: string) {
     ));
 }
 
-// ────────────────────────────────────────────
-// Página (SERVER COMPONENT)
-// ────────────────────────────────────────────
 export default async function Home({
   searchParams,
 }: {
-  // Next 15 lo pasa como promesa
   searchParams: Promise<{ lang?: string }>;
 }) {
   const params = await searchParams;
-  const lang = params?.lang === "en" ? "en" : "es";
+  const lang: "es" | "en" = params?.lang === "en" ? "en" : "es";
 
-  // leemos los .md y el yaml
+  // leer contenido
   const contentDir = path.join(process.cwd(), "content");
   const aboutRaw = fs.readFileSync(path.join(contentDir, "about.md"), "utf8");
   const philosophyRaw = fs.readFileSync(
@@ -93,62 +83,49 @@ export default async function Home({
   );
   const skills = YAML.parse(skillsRaw) as Record<string, string[]>;
 
-  // aunque ahora no los pintemos como secciones separadas,
-  // los dejo procesados por si luego quieres usarlos en otro lado
   const aboutMd = getMdByLang(aboutRaw, lang);
   const philosophyMd = getMdByLang(philosophyRaw, lang);
 
-  // textos fijos
+  // textos UI
   const ui = {
     es: {
-      title:
-        "Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital",
-      subtitle:
-        "14+ años de experiencia técnica. Desarrollo web moderno, soporte, documentación y QA con apoyo de IA.",
-      viewCv: "Ver / Descargar CV",
-      viewProjects: "Ver proyectos",
+      langTitle: "Ver el portfolio en otro idioma.",
+      quickTitle: "Accesos rápidos",
+      quickCv: "Ver / descargar CV",
+      quickProjects: "Ver proyectos",
+      quickContact: "Contacto",
+      availabilityTitle: "Disponibilidad",
+      availabilityText:
+        "Remoto / mixto · España / UE · Entregables en PDF · Documentación clara.",
+      stackTitle: "Stack principal",
+      stackDesc:
+        "Tecnologías que uso más en proyectos personales y de clientes.",
+      aboutTitle: "Sobre mí",
+      philosophyTitle: "Filosofía de trabajo",
       skillsTitle: "Habilidades",
-      sidebar: {
-        langTitle: "Ver el portfolio en otro idioma.",
-        quickTitle: "Accesos rápidos",
-        quickCv: "Ver / descargar CV",
-        quickProjects: "Ver proyectos",
-        quickContact: "Contacto",
-        availabilityTitle: "Disponibilidad",
-        availabilityText:
-          "Remoto / mixto · España / UE · Entregables en PDF · Documentación clara.",
-        stackTitle: "Stack principal",
-        stackDesc:
-          "Tecnologías que uso más en proyectos personales y de clientes.",
-      },
+      notesTitle: "Notas rápidas",
     },
     en: {
-      title: "Melquiades Farías — Web Developer | Technology & Digital Support",
-      subtitle:
-        "14+ years of technical experience. Modern web development, support, documentation and AI-assisted QA.",
-      viewCv: "View / Download CV",
-      viewProjects: "View projects",
+      langTitle: "View this portfolio in another language.",
+      quickTitle: "Quick links",
+      quickCv: "View / download CV",
+      quickProjects: "View projects",
+      quickContact: "Contact",
+      availabilityTitle: "Availability",
+      availabilityText:
+        "Remote / hybrid · Spain / EU · PDF deliverables · Clear documentation.",
+      stackTitle: "Main stack",
+      stackDesc: "Technologies I use most in personal and client projects.",
+      aboutTitle: "About me",
+      philosophyTitle: "Work philosophy",
       skillsTitle: "Skills",
-      sidebar: {
-        langTitle: "View this portfolio in another language.",
-        quickTitle: "Quick links",
-        quickCv: "View / download CV",
-        quickProjects: "View projects",
-        quickContact: "Contact",
-        availabilityTitle: "Availability",
-        availabilityText:
-          "Remote / hybrid · Spain / EU · PDF deliverables · Clear documentation.",
-        stackTitle: "Main stack",
-        stackDesc: "Technologies I use most in personal and client projects.",
-      },
+      notesTitle: "Quick notes",
     },
   }[lang];
 
-  // helper para mantener ?lang=en en los enlaces
   const withLang = (p: string) => (lang === "en" ? `${p}?lang=en` : p);
 
-  // para reutilizar el mismo estilo de tarjeta en la columna derecha
-  const cardContainer = [
+  const card = [
     themeTokens.cardRadius,
     themeTokens.cardBorder,
     themeTokens.cardBg,
@@ -157,179 +134,157 @@ export default async function Home({
 
   return (
     <main className={`min-h-screen ${themeTokens.backgroundBase} pb-12`}>
-      {/* hero */}
-      <div className="mx-auto max-w-6xl px-4 pt-8">
-        {/* layout de 2 columnas */}
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
-          {/* columna izquierda */}
-          <div className="space-y-8">
-            <header
-              className={`${cardContainer} flex flex-col gap-6 lg:flex-row lg:items-center`}
-            >
-              <div className="relative h-32 w-32 md:h-36 md:w-36 rounded-3xl overflow-hidden bg-slate-800">
-                <Image
-                  src="/avatar.jpg"
-                  alt="Melquiades Farías"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 128px, 144px"
-                />
-              </div>
-              <div className="space-y-2">
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-50">
-                  {ui.title}
-                </h1>
-                <p className="text-slate-300 max-w-xl">{ui.subtitle}</p>
-                <div className="flex flex-wrap gap-3 pt-1">
-                  <a
-                    href={withLang("/cv")}
-                    className="rounded-full bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-500 transition"
-                  >
-                    {ui.viewCv}
-                  </a>
-                  <a
-                    href={withLang("/projects")}
-                    className="rounded-full border border-slate-500 px-5 py-2 text-sm font-medium text-white hover:bg-slate-800 transition"
-                  >
-                    {ui.viewProjects}
-                  </a>
-                </div>
-              </div>
-            </header>
+      <div className="mx-auto max-w-6xl px-4 pt-8 space-y-8">
+        {/* HERO (ya está con tu foto y textos nuevos) */}
+        <Hero lang={lang} />
 
-            {/* sobre mí + filosofía en forma de secciones */}
-            <Section
-              id="about"
-              title={lang === "en" ? "About me" : "Sobre mí"}
-              headingLevel="h2"
-            >
-              <div className="space-y-3 leading-relaxed text-slate-200">
-                {renderParagraphs(aboutMd)}
-              </div>
-            </Section>
-
-            <Section
-              id="philosophy"
-              title={lang === "en" ? "Work philosophy" : "Filosofía de trabajo"}
-              headingLevel="h2"
-            >
-              <div className="space-y-3 leading-relaxed text-slate-200">
-                {renderParagraphs(philosophyMd)}
-              </div>
-            </Section>
-
-            <Section id="skills" title={ui.skillsTitle} headingLevel="h2">
-              <SkillGrid skills={skills} />
-            </Section>
+        {/* fila de tarjetas */}
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {/* idioma */}
+          <div className={card}>
+            <h2 className="text-sm font-semibold text-slate-100">
+              {ui.langTitle}
+            </h2>
+            <div className="mt-3 flex gap-2">
+              <a
+                href="/"
+                className={`flex-1 rounded-lg py-2 text-center text-sm font-medium ${
+                  lang === "es"
+                    ? "bg-blue-600 text-white"
+                    : "bg-slate-800 text-slate-200"
+                }`}
+              >
+                ES
+              </a>
+              <a
+                href="/?lang=en"
+                className={`flex-1 rounded-lg py-2 text-center text-sm font-medium ${
+                  lang === "en"
+                    ? "bg-blue-600 text-white"
+                    : "bg-slate-800 text-slate-200"
+                }`}
+              >
+                EN
+              </a>
+            </div>
           </div>
 
-          {/* columna derecha */}
-          <aside className="space-y-4">
-            {/* selector de idioma */}
-            <div className={cardContainer}>
-              <h2
-                className={`text-sm font-semibold ${themeTokens.headingColor}`}
-              >
-                {ui.sidebar.langTitle}
-              </h2>
-              <div className="mt-3 flex gap-2">
-                <a
-                  href="/"
-                  className={`flex-1 rounded-lg py-2 text-center text-sm font-medium ${
-                    lang === "es"
-                      ? "bg-blue-600 text-white"
-                      : "bg-slate-800 text-slate-200"
-                  }`}
-                >
-                  ES
+          {/* accesos rápidos */}
+          <div className={card}>
+            <h2 className="text-sm font-semibold text-slate-100">
+              {ui.quickTitle}
+            </h2>
+            <ul className="mt-2 space-y-1 text-sm text-slate-200">
+              <li>
+                <a href={withLang("/cv")} className="hover:text-white">
+                  {ui.quickCv}
                 </a>
-                <a
-                  href="/?lang=en"
-                  className={`flex-1 rounded-lg py-2 text-center text-sm font-medium ${
-                    lang === "en"
-                      ? "bg-blue-600 text-white"
-                      : "bg-slate-800 text-slate-200"
-                  }`}
-                >
-                  EN
+              </li>
+              <li>
+                <a href={withLang("/projects")} className="hover:text-white">
+                  {ui.quickProjects}
                 </a>
-              </div>
-            </div>
+              </li>
+              <li>
+                <a href={withLang("/contact")} className="hover:text-white">
+                  {ui.quickContact}
+                </a>
+              </li>
+            </ul>
+          </div>
 
-            {/* accesos rápidos */}
-            <div className={`${cardContainer} space-y-2`}>
-              <h2
-                className={`text-sm font-semibold ${themeTokens.headingColor}`}
-              >
-                {ui.sidebar.quickTitle}
-              </h2>
-              <ul className="space-y-1 text-sm text-slate-200">
-                <li>
-                  <a href={withLang("/cv")} className="hover:text-white">
-                    {ui.sidebar.quickCv}
-                  </a>
-                </li>
-                <li>
-                  <a href={withLang("/projects")} className="hover:text-white">
-                    {ui.sidebar.quickProjects}
-                  </a>
-                </li>
-                <li>
-                  <a href={withLang("/contact")} className="hover:text-white">
-                    {ui.sidebar.quickContact}
-                  </a>
-                </li>
-              </ul>
-            </div>
+          {/* disponibilidad */}
+          <div className={card}>
+            <h2 className="text-sm font-semibold text-slate-100">
+              {ui.availabilityTitle}
+            </h2>
+            <p className="mt-2 text-sm text-slate-200">
+              {ui.availabilityText}
+            </p>
+          </div>
 
-            {/* disponibilidad */}
-            <div
-              className={`${cardContainer} space-y-1 text-sm text-slate-200`}
-            >
-              <h2
-                className={`text-sm font-semibold ${themeTokens.headingColor}`}
-              >
-                {ui.sidebar.availabilityTitle}
-              </h2>
-              <p>{ui.sidebar.availabilityText}</p>
-            </div>
-
-            {/* tarjetas que rotan */}
-            <RotatingInfo lang={lang} />
-
-            {/* stack principal */}
-            <div className={`${cardContainer} space-y-3`}>
-              <h2
-                className={`text-sm font-semibold ${themeTokens.headingColor}`}
-              >
-                {ui.sidebar.stackTitle}
-              </h2>
-              <p className="text-sm text-slate-200">{ui.sidebar.stackDesc}</p>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Next.js",
-                  "React",
-                  "Node.js",
-                  "Tailwind",
-                  "MongoDB",
-                  "Express",
-                ].map((item) => (
+          {/* stack principal */}
+          <div className={card}>
+            <h2 className="text-sm font-semibold text-slate-100">
+              {ui.stackTitle}
+            </h2>
+            <p className="mt-2 text-sm text-slate-200">{ui.stackDesc}</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {["Next.js", "React", "Node.js", "Tailwind", "MongoDB", "Express"].map(
+                (item) => (
                   <span
                     key={item}
                     className="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-100"
                   >
                     {item}
                   </span>
-                ))}
-              </div>
+                )
+              )}
             </div>
-          </aside>
+          </div>
         </div>
-      </div>
 
-      <footer className="border-t border-slate-900/70 mt-10 py-6 text-center text-sm text-slate-500">
-        © 2025 Melquiades Farías · Hecho con Next.js + Tailwind
-      </footer>
+        {/* acordeón con todo el contenido largo */}
+        <HomeAccordion
+          defaultId="about"
+          items={[
+            {
+              id: "about",
+              title: ui.aboutTitle,
+              content: (
+                <>
+                  {renderParagraphs(aboutMd)}
+                  <a
+                    href={withLang("/cv")}
+                    className="inline-flex text-sm text-blue-300 hover:text-blue-100"
+                  >
+                    {lang === "en" ? "View full profile →" : "Ver perfil completo →"}
+                  </a>
+                </>
+              ),
+            },
+            {
+              id: "philosophy",
+              title: ui.philosophyTitle,
+              content: (
+                <>
+                  {renderParagraphs(philosophyMd)}
+                  <a
+                    href={withLang("/cv")}
+                    className="inline-flex text-sm text-blue-300 hover:text-blue-100"
+                  >
+                    {lang === "en"
+                      ? "See full philosophy →"
+                      : "Ver filosofía completa →"}
+                  </a>
+                </>
+              ),
+            },
+            {
+              id: "skills",
+              title: ui.skillsTitle,
+              content: (
+                <>
+                  <SkillGrid skills={skills} />
+                  <a
+                    href={withLang("/cv")}
+                    className="inline-flex mt-3 text-sm text-blue-300 hover:text-blue-100"
+                  >
+                    {lang === "en"
+                      ? "View full skillset →"
+                      : "Ver todas las habilidades →"}
+                  </a>
+                </>
+              ),
+            },
+            {
+              id: "notes",
+              title: ui.notesTitle,
+              content: <RotatingInfo lang={lang} />,
+            },
+          ]}
+        />
+      </div>
     </main>
   );
 }
