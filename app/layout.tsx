@@ -3,6 +3,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ThemeProvider from "@/components/ThemeProvider";
 
 const siteUrl = "https://remotas-portfolio.vercel.app";
 
@@ -85,17 +86,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
       </head>
-      <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+      <body className="min-h-screen bg-slate-950 text-slate-50 flex flex-col">
+        <ThemeProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
