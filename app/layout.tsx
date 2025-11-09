@@ -4,24 +4,30 @@ import { ReactNode } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+// si cambias dominio, cambia esto
 const siteUrl = "https://remotas-portfolio.vercel.app";
+const siteName = "Remotas Work · Melquiades Farías";
+const siteTitle =
+  "Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital";
+const siteDescription =
+  "Portfolio técnico de Melquiades Farías (Remotas Work). Desarrollo web con Next.js y Tailwind, soporte digital, documentación técnica y QA asistido por IA. Disponible para remoto / mixto en España y UE.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default:
-      "Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital",
+    default: siteTitle,
     template: "%s | Melquiades Farías",
   },
-  description:
-    "Portfolio de Melquiades Farías. Desarrollo web con Next.js y Tailwind, soporte digital, documentación técnica y QA asistido por IA. Disponible para remoto / mixto en España y UE.",
+  description: siteDescription,
   keywords: [
     "Melquiades Farías",
+    "Remotas Work",
     "desarrollador web",
     "Next.js",
     "Tailwind CSS",
-    "portfolio",
+    "portfolio técnico",
     "documentación técnica",
+    "soporte digital",
     "remoto",
     "España",
     "UE",
@@ -32,19 +38,19 @@ export const metadata = {
       url: "https://www.linkedin.com/in/remotas-work/",
     },
   ],
+  creator: "Melquiades Farías",
+  publisher: "Melquiades Farías",
   openGraph: {
-    title:
-      "Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital",
-    description:
-      "Portfolio técnico con proyectos, experiencia, certificaciones y contacto.",
+    title: siteTitle,
+    description: siteDescription,
     url: "/",
-    siteName: "Portfolio de Melquiades Farías",
+    siteName,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Portfolio de Melquiades Farías",
+        alt: siteTitle,
       },
     ],
     locale: "es_ES",
@@ -52,10 +58,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital",
-    description:
-      "Portfolio técnico con proyectos, experiencia, certificaciones y contacto.",
+    title: siteTitle,
+    description: siteDescription,
     images: ["/og-image.png"],
   },
   alternates: {
@@ -65,6 +69,8 @@ export const metadata = {
       "en-US": "/?lang=en",
     },
   },
+  // opcional pero útil
+  category: "technology",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -73,10 +79,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       {/* fondo y layout global */}
       <body className="min-h-screen bg-[#020617] text-slate-50 flex flex-col">
         <Header />
-
-        {/* el contenido ocupa todo lo que queda, así no queda franja */}
         <main className="flex-1">{children}</main>
-
         <Footer />
       </body>
     </html>
