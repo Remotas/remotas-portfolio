@@ -70,10 +70,13 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="es">
-      <body>
+      {/* fondo y layout global */}
+      <body className="min-h-screen bg-[#020617] text-slate-50 flex flex-col">
         <Header />
-        {/* ya tienes el layout responsivo en las páginas; aquí solo envolvemos */}
-        <main>{children}</main>
+
+        {/* el contenido ocupa todo lo que queda, así no queda franja */}
+        <main className="flex-1">{children}</main>
+
         <Footer />
       </body>
     </html>

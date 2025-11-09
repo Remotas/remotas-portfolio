@@ -34,7 +34,7 @@ function getMdByLang(md: string, lang: "es" | "en") {
   const markerEn = "## EN";
 
   const startMarker = lang === "es" ? markerEs : markerEn;
-  const endMarker = lang === "es" ? markerEn : markerEs;
+  const endMarker = lang === "es" ? markerEn : "## ES";
 
   const startIdx = clean.indexOf(startMarker);
   if (startIdx === -1) return clean.trim();
@@ -133,9 +133,10 @@ export default async function Home({
   ].join(" ");
 
   return (
-    <main className={`min-h-screen ${themeTokens.backgroundBase} pb-12`}>
+    // 👇 aquí estaba pb-12; lo bajamos a pb-4 para que no quede la franja
+    <main className={`min-h-screen ${themeTokens.backgroundBase} pb-4`}>
       <div className="mx-auto max-w-6xl px-4 pt-8 space-y-8">
-        {/* HERO (ya está con tu foto y textos nuevos) */}
+        {/* HERO */}
         <Hero lang={lang} />
 
         {/* fila de tarjetas */}
@@ -198,9 +199,7 @@ export default async function Home({
             <h2 className="text-sm font-semibold text-slate-100">
               {ui.availabilityTitle}
             </h2>
-            <p className="mt-2 text-sm text-slate-200">
-              {ui.availabilityText}
-            </p>
+            <p className="mt-2 text-sm text-slate-200">{ui.availabilityText}</p>
           </div>
 
           {/* stack principal */}
@@ -210,16 +209,21 @@ export default async function Home({
             </h2>
             <p className="mt-2 text-sm text-slate-200">{ui.stackDesc}</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              {["Next.js", "React", "Node.js", "Tailwind", "MongoDB", "Express"].map(
-                (item) => (
-                  <span
-                    key={item}
-                    className="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-100"
-                  >
-                    {item}
-                  </span>
-                )
-              )}
+              {[
+                "Next.js",
+                "React",
+                "Node.js",
+                "Tailwind",
+                "MongoDB",
+                "Express",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-100"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -238,7 +242,9 @@ export default async function Home({
                     href={withLang("/cv")}
                     className="inline-flex text-sm text-blue-300 hover:text-blue-100"
                   >
-                    {lang === "en" ? "View full profile →" : "Ver perfil completo →"}
+                    {lang === "en"
+                      ? "View full profile →"
+                      : "Ver perfil completo →"}
                   </a>
                 </>
               ),
