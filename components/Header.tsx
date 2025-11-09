@@ -43,8 +43,8 @@ export default function Header() {
           <Image
             src="/logos/remotas-mark-light.svg"
             alt="Remotas Work"
-            width={48}
-            height={48}
+            width={100}
+            height={100}
             className="hidden dark:block"
             priority
           />
