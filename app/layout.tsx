@@ -4,53 +4,41 @@ import { ReactNode } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-// si cambias dominio, cambia esto
 const siteUrl = "https://remotas-portfolio.vercel.app";
-const siteName = "Remotas Work · Melquiades Farías";
-const siteTitle =
-  "Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital";
-const siteDescription =
-  "Portfolio técnico de Melquiades Farías (Remotas Work). Desarrollo web con Next.js y Tailwind, soporte digital, documentación técnica y QA asistido por IA. Disponible para remoto / mixto en España y UE.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: siteTitle,
-    template: "%s | Melquiades Farías",
+    default:
+      "Remotas Work · Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital",
+    template: "%s | Remotas Work · Melquiades Farías",
   },
-  description: siteDescription,
+  description:
+    "Portfolio profesional de Melquiades Farías (Remotas Work). Desarrollo web con Next.js y Tailwind, soporte digital, documentación técnica y QA asistido por IA. Disponible para remoto / mixto en España y UE.",
   keywords: [
     "Melquiades Farías",
     "Remotas Work",
     "desarrollador web",
     "Next.js",
     "Tailwind CSS",
-    "portfolio técnico",
-    "documentación técnica",
-    "soporte digital",
-    "remoto",
+    "portfolio profesional",
+    "freelance remoto",
     "España",
     "UE",
   ],
-  authors: [
-    {
-      name: "Melquiades Farías",
-      url: "https://www.linkedin.com/in/remotas-work/",
-    },
-  ],
-  creator: "Melquiades Farías",
-  publisher: "Melquiades Farías",
   openGraph: {
-    title: siteTitle,
-    description: siteDescription,
-    url: "/",
-    siteName,
+    title:
+      "Remotas Work · Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital",
+    description:
+      "Portfolio profesional con proyectos, experiencia, certificaciones y contacto.",
+    url: siteUrl,
+    siteName: "Remotas Work · Melquiades Farías",
     images: [
       {
-        url: "/og-image.png",
+        url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: siteTitle,
+        alt: "Portfolio de Melquiades Farías",
       },
     ],
     locale: "es_ES",
@@ -58,9 +46,11 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteTitle,
-    description: siteDescription,
-    images: ["/og-image.png"],
+    title:
+      "Remotas Work · Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital",
+    description:
+      "Portfolio técnico con proyectos, experiencia y contacto. Disponible para remoto / mixto en España y UE.",
+    images: [`${siteUrl}/og-image.png`],
   },
   alternates: {
     canonical: "/",
@@ -69,17 +59,42 @@ export const metadata = {
       "en-US": "/?lang=en",
     },
   },
-  // opcional pero útil
-  category: "technology",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Melquiades Farías",
+    jobTitle: "Web Developer / Tech Support",
+    url: siteUrl,
+    image: `${siteUrl}/avatar.jpg`,
+    worksFor: {
+      "@type": "Organization",
+      name: "Remotas Work",
+    },
+    sameAs: [
+      "https://www.linkedin.com/in/remotas-work/",
+      "https://github.com/Remotas",
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Córdoba",
+      addressCountry: "ES",
+    },
+  };
+
   return (
     <html lang="es">
-      {/* fondo y layout global */}
-      <body className="min-h-screen bg-[#020617] text-slate-50 flex flex-col">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+      </head>
+      <body>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
