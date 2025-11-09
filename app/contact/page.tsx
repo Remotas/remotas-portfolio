@@ -1,5 +1,6 @@
 // app/contact/page.tsx
 import ContactForm from "./ContactForm";
+import { themeTokens } from "@/theme/tokens";
 
 export const metadata = {
   title: "Contacto",
@@ -12,7 +13,9 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-50">
+    <main
+      className={`min-h-screen ${themeTokens.backgroundBase} text-slate-50`}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div className="grid gap-6 md:grid-cols-2">
           {/* Panel de datos */}
