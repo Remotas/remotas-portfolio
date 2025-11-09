@@ -5,12 +5,28 @@ import YAML from "yaml";
 import Section from "@/components/Section";
 import { themeTokens } from "@/theme/tokens";
 
+const siteUrl = "https://remotas-portfolio.vercel.app";
+
 export const metadata = {
   title: "Certificaciones",
   description:
-    "Certificaciones y cursos técnicos completados, con enlace al detalle cuando está disponible.",
+    "Certificaciones oficiales, cursos y formación complementaria de Melquiades Farías (Remotas Work).",
   alternates: {
     canonical: "/certifications",
+  },
+  openGraph: {
+    title: "Certificaciones — Melquiades Farías",
+    description:
+      "Formación técnica, homologaciones y cursos relevantes en desarrollo web y sistemas.",
+    url: `${siteUrl}/certifications`,
+    siteName: "Portfolio de Melquiades Farías",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Certificaciones — Melquiades Farías",
+    description:
+      "Formación técnica, homologaciones y cursos relevantes en desarrollo web y sistemas.",
   },
 };
 
@@ -24,6 +40,7 @@ function getCertifications() {
     issuer?: string;
     date?: string;
     url?: string;
+    description?: string;
   }>;
 }
 
@@ -34,9 +51,13 @@ export default function CertificationsPage() {
     <main className={`min-h-screen ${themeTokens.backgroundBase} pb-12 pt-8`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-6">
         <Section id="certifications" title="Certificaciones" headingLevel="h1">
+          <p className="text-slate-200/80 mb-4">
+            Formación oficial, homologaciones y cursos que completan el perfil
+            técnico. ES/EN en línea, siguiendo el resto del portfolio.
+          </p>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {certs.map((c, idx) => (
-              <div
+              <article
                 key={c.title ?? idx}
                 className={`rounded-xl ${themeTokens.cardBorder} bg-slate-900/40 p-4`}
               >
@@ -46,11 +67,9 @@ export default function CertificationsPage() {
                   {c.title}
                 </h2>
                 {c.issuer ? (
-                  <p className={`text-sm ${themeTokens.mutedColor} mt-1`}>
-                    {c.issuer}
-                  </p>
+                  <p className="text-sm text-slate-300 mt-1">{c.issuer}</p>
                 ) : null}
-                <div className="mt-2 flex items-center justify-between text-xs text-slate-500">
+                <div className="mt-2 flex items-center justify-between text-xs text-slate-400">
                   {c.date ? <span>{c.date}</span> : <span />}
                   {c.url ? (
                     <a
@@ -63,7 +82,12 @@ export default function CertificationsPage() {
                     </a>
                   ) : null}
                 </div>
-              </div>
+                {c.description ? (
+                  <p className="mt-3 text-xs text-slate-200/70 leading-relaxed">
+                    {c.description}
+                  </p>
+                ) : null}
+              </article>
             ))}
           </div>
         </Section>
