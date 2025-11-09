@@ -6,12 +6,55 @@ import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import { themeTokens } from "@/theme/tokens";
 
+const siteName = "Remotas Work · Melquiades Farías";
+const siteUrl = "https://remotas-portfolio.vercel.app";
+
 export const metadata = {
-  title: "Proyectos",
+  title: "Proyectos · Remotas Work",
   description:
-    "Proyectos personales y de clientes documentados: stack, alcance y enlaces.",
+    "Proyectos personales y de clientes desarrollados por Melquiades Farías: arquitectura web moderna, e-commerce, monorepos y automatización.",
+  keywords: [
+    "Melquiades Farías",
+    "Remotas Work",
+    "Next.js",
+    "proyectos",
+    "portfolio",
+    "React",
+    "Node.js",
+    "TailwindCSS",
+    "e-commerce",
+    "monorepo",
+  ],
+  openGraph: {
+    title: "Proyectos · Remotas Work",
+    description:
+      "Portafolio de proyectos técnicos de Melquiades Farías: desarrollo web, monorepos y sistemas digitales.",
+    url: `${siteUrl}/projects`,
+    siteName,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Proyectos de Melquiades Farías",
+      },
+    ],
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Proyectos · Remotas Work",
+    description:
+      "Portafolio de proyectos técnicos de Melquiades Farías: desarrollo web, monorepos y sistemas digitales.",
+    images: ["/og-image.png"],
+  },
   alternates: {
     canonical: "/projects",
+    languages: {
+      "es-ES": "/projects",
+      "en-US": "/projects?lang=en",
+    },
   },
 };
 
