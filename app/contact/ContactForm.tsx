@@ -18,9 +18,10 @@ export default function ContactForm() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (
-    field: keyof ContactFormData
-  ): React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> =>
+  const handleChange =
+    (
+      field: keyof ContactFormData
+    ): React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> =>
     (event) => {
       setFormData((prev) => ({ ...prev, [field]: event.target.value }));
     };
@@ -57,9 +58,17 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-5 text-slate-200"
+      aria-label="Formulario de contacto"
+    >
+      {/* Nombre */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm text-slate-300" htmlFor="contact-name">
+        <label
+          className="text-sm font-medium text-slate-300"
+          htmlFor="contact-name"
+        >
           Nombre
         </label>
         <input
@@ -69,12 +78,18 @@ export default function ContactForm() {
           required
           value={formData.name}
           onChange={handleChange("name")}
-          className="bg-slate-950/40 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600/50"
+          className="bg-slate-900/40 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition"
+          placeholder="Tu nombre completo"
         />
       </div>
+
+      {/* Correo */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm text-slate-300" htmlFor="contact-email">
-          Correo
+        <label
+          className="text-sm font-medium text-slate-300"
+          htmlFor="contact-email"
+        >
+          Correo electrónico
         </label>
         <input
           id="contact-email"
@@ -83,11 +98,17 @@ export default function ContactForm() {
           required
           value={formData.email}
           onChange={handleChange("email")}
-          className="bg-slate-950/40 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600/50"
+          className="bg-slate-900/40 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition"
+          placeholder="tu@correo.com"
         />
       </div>
+
+      {/* Mensaje */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm text-slate-300" htmlFor="contact-message">
+        <label
+          className="text-sm font-medium text-slate-300"
+          htmlFor="contact-message"
+        >
           Mensaje
         </label>
         <textarea
@@ -97,22 +118,27 @@ export default function ContactForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange("message")}
-          className="bg-slate-950/40 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600/50"
+          className="bg-slate-900/40 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition"
+          placeholder="Escribe tu mensaje aquí..."
         />
       </div>
+
+      {/* Botón */}
       <button
         type="submit"
         disabled={loading}
         className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-500 disabled:opacity-60"
       >
-        {loading ? "Enviando..." : "Enviar"}
+        {loading ? "Enviando..." : "Enviar mensaje"}
       </button>
-      {success ? (
-        <p className="text-sm text-green-400">Mensaje enviado correctamente.</p>
-      ) : null}
-      {error ? (
-        <p className="text-sm text-red-400">{error}</p>
-      ) : null}
+
+      {/* Estado de envío */}
+      {success && (
+        <p className="text-sm text-green-400">
+          ✅ Mensaje enviado correctamente.
+        </p>
+      )}
+      {error && <p className="text-sm text-red-400">⚠️ {error}</p>}
     </form>
   );
 }
