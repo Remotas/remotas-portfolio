@@ -1,103 +1,68 @@
 // app/layout.tsx
+import type { Metadata } from "next";
 import "./globals.css";
-import { ReactNode } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
 
 const siteUrl = "https://remotas-portfolio.vercel.app";
 
-export const metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default:
-      "Remotas Work · Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital",
-    template: "%s | Remotas Work · Melquiades Farías",
-  },
+export const metadata: Metadata = {
+  title: "Remotas Work · Melquiades Farías",
   description:
-    "Portfolio profesional de Melquiades Farías (Remotas Work). Desarrollo web con Next.js y Tailwind, soporte digital, documentación técnica y QA asistido por IA. Disponible para remoto / mixto en España y UE.",
-  keywords: [
-    "Melquiades Farías",
-    "Remotas Work",
-    "desarrollador web",
-    "Next.js",
-    "Tailwind CSS",
-    "portfolio profesional",
-    "freelance remoto",
-    "España",
-    "UE",
-  ],
+    "Desarrollador web, soporte digital y sistemas. 14+ años de base técnica en telecomunicaciones y stack moderno: HTML, CSS, JavaScript, Next.js, WordPress, despliegues en Vercel. Documentación clara y entregables en PDF.",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title:
-      "Remotas Work · Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital",
-    description:
-      "Portfolio profesional con proyectos, experiencia, certificaciones y contacto.",
-    url: siteUrl,
-    siteName: "Remotas Work · Melquiades Farías",
-    images: [
-      {
-        url: `${siteUrl}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: "Portfolio de Melquiades Farías",
-      },
-    ],
-    locale: "es_ES",
     type: "website",
+    url: siteUrl,
+    title: "Remotas Work · Melquiades Farías",
+    description:
+      "Desarrollador web, soporte digital y sistemas. Proyectos documentados y trabajo remoto.",
+    siteName: "Remotas Work",
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Remotas Work · Melquiades Farías — Desarrollador Web | Tecnología & Soporte Digital",
+    title: "Remotas Work · Melquiades Farías",
     description:
-      "Portfolio técnico con proyectos, experiencia y contacto. Disponible para remoto / mixto en España y UE.",
-    images: [`${siteUrl}/og-image.png`],
-  },
-  alternates: {
-    canonical: "/",
-    languages: {
-      "es-ES": "/",
-      "en-US": "/?lang=en",
-    },
+      "Desarrollador web, soporte digital y sistemas. Proyectos documentados y trabajo remoto.",
   },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
-  const personSchema = {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Melquiades Farías",
-    jobTitle: "Web Developer / Tech Support",
     url: siteUrl,
-    image: `${siteUrl}/avatar.jpg`,
-    worksFor: {
-      "@type": "Organization",
-      name: "Remotas Work",
-    },
+    jobTitle: "Desarrollador web · soporte digital y sistemas",
     sameAs: [
       "https://www.linkedin.com/in/remotas-work/",
       "https://github.com/Remotas",
     ],
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Córdoba",
-      addressCountry: "ES",
-    },
   };
 
   return (
-    <html lang="es" suppressHydrationWarning>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-        />
-      </head>
-      <body className="min-h-screen bg-slate-950 text-slate-50 flex flex-col">
+    <html lang="es" suppressHydrationWarning className="scroll-smooth">
+      <body className="min-h-screen flex flex-col">
         <ThemeProvider>
           <Header />
-          <main className="flex-1">{children}</main>
+          {/* mismo fondo que el body + transición al cambiar tema */}
+          <main className="flex-1 bg-[var(--background)] transition-colors">
+            {children}
+          </main>
           <Footer />
+          <script
+            type="application/ld+json"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
         </ThemeProvider>
       </body>
     </html>

@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import SkillGrid from "@/components/SkillGrid";
 import RotatingInfo from "@/components/RotatingInfo";
 import HomeAccordion from "@/components/HomeAccordion";
-import { themeTokens } from "@/theme/tokens";
 
 export const metadata = {
   title: "Inicio",
@@ -55,7 +54,7 @@ function renderParagraphs(md: string) {
     .map((para, idx) => (
       <p
         key={idx}
-        className="text-justify leading-relaxed text-slate-100/90 mb-3"
+        className="text-justify leading-relaxed text-[var(--foreground)]/90 mb-3"
       >
         {para.trim()}
       </p>
@@ -104,6 +103,7 @@ export default async function Home({
       philosophyTitle: "Filosofía de trabajo",
       skillsTitle: "Habilidades",
       notesTitle: "Notas rápidas",
+      viewProfile: "Ver perfil completo →",
     },
     en: {
       langTitle: "View this portfolio in another language.",
@@ -120,49 +120,46 @@ export default async function Home({
       philosophyTitle: "Work philosophy",
       skillsTitle: "Skills",
       notesTitle: "Quick notes",
+      viewProfile: "View full profile →",
     },
   }[lang];
 
   const withLang = (p: string) => (lang === "en" ? `${p}?lang=en` : p);
 
-  const card = [
-    themeTokens.cardRadius,
-    themeTokens.cardBorder,
-    themeTokens.cardBg,
-    themeTokens.cardPadding,
-  ].join(" ");
+  // clase base para las tarjetas
+  const card =
+    "rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-4 transition-colors";
 
   return (
-    // 👇 aquí estaba pb-12; lo bajamos a pb-4 para que no quede la franja
-    <main className={`min-h-screen ${themeTokens.backgroundBase} pb-4`}>
+    <div className="min-h-screen bg-[var(--background)] pb-4 transition-colors">
       <div className="mx-auto max-w-6xl px-4 pt-8 space-y-8">
-        {/* HERO */}
+        {/* HERO (ya está estilizado por componente) */}
         <Hero lang={lang} />
 
         {/* fila de tarjetas */}
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {/* idioma */}
           <div className={card}>
-            <h2 className="text-sm font-semibold text-slate-100">
+            <h2 className="text-sm font-semibold text-[var(--foreground)]">
               {ui.langTitle}
             </h2>
             <div className="mt-3 flex gap-2">
               <a
                 href="/"
-                className={`flex-1 rounded-lg py-2 text-center text-sm font-medium ${
+                className={`flex-1 rounded-lg py-2 text-center text-sm font-medium transition-colors ${
                   lang === "es"
                     ? "bg-blue-600 text-white"
-                    : "bg-slate-800 text-slate-200"
+                    : "bg-[var(--background)]/40 text-[var(--foreground)]"
                 }`}
               >
                 ES
               </a>
               <a
                 href="/?lang=en"
-                className={`flex-1 rounded-lg py-2 text-center text-sm font-medium ${
+                className={`flex-1 rounded-lg py-2 text-center text-sm font-medium transition-colors ${
                   lang === "en"
                     ? "bg-blue-600 text-white"
-                    : "bg-slate-800 text-slate-200"
+                    : "bg-[var(--background)]/40 text-[var(--foreground)]"
                 }`}
               >
                 EN
@@ -172,22 +169,31 @@ export default async function Home({
 
           {/* accesos rápidos */}
           <div className={card}>
-            <h2 className="text-sm font-semibold text-slate-100">
+            <h2 className="text-sm font-semibold text-[var(--foreground)]">
               {ui.quickTitle}
             </h2>
-            <ul className="mt-2 space-y-1 text-sm text-slate-200">
+            <ul className="mt-2 space-y-1 text-sm text-[var(--foreground)]/90">
               <li>
-                <a href={withLang("/cv")} className="hover:text-white">
+                <a
+                  href={withLang("/cv")}
+                  className="hover:text-[var(--foreground)]"
+                >
                   {ui.quickCv}
                 </a>
               </li>
               <li>
-                <a href={withLang("/projects")} className="hover:text-white">
+                <a
+                  href={withLang("/projects")}
+                  className="hover:text-[var(--foreground)]"
+                >
                   {ui.quickProjects}
                 </a>
               </li>
               <li>
-                <a href={withLang("/contact")} className="hover:text-white">
+                <a
+                  href={withLang("/contact")}
+                  className="hover:text-[var(--foreground)]"
+                >
                   {ui.quickContact}
                 </a>
               </li>
@@ -196,18 +202,22 @@ export default async function Home({
 
           {/* disponibilidad */}
           <div className={card}>
-            <h2 className="text-sm font-semibold text-slate-100">
+            <h2 className="text-sm font-semibold text-[var(--foreground)]">
               {ui.availabilityTitle}
             </h2>
-            <p className="mt-2 text-sm text-slate-200">{ui.availabilityText}</p>
+            <p className="mt-2 text-sm text-[var(--foreground)]/85">
+              {ui.availabilityText}
+            </p>
           </div>
 
           {/* stack principal */}
           <div className={card}>
-            <h2 className="text-sm font-semibold text-slate-100">
+            <h2 className="text-sm font-semibold text-[var(--foreground)]">
               {ui.stackTitle}
             </h2>
-            <p className="mt-2 text-sm text-slate-200">{ui.stackDesc}</p>
+            <p className="mt-2 text-sm text-[var(--foreground)]/85">
+              {ui.stackDesc}
+            </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {[
                 "Next.js",
@@ -219,7 +229,7 @@ export default async function Home({
               ].map((item) => (
                 <span
                   key={item}
-                  className="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-100"
+                  className="rounded-full bg-[var(--background)]/40 px-3 py-1 text-xs text-[var(--foreground)]"
                 >
                   {item}
                 </span>
@@ -242,9 +252,7 @@ export default async function Home({
                     href={withLang("/cv")}
                     className="inline-flex text-sm text-blue-300 hover:text-blue-100"
                   >
-                    {lang === "en"
-                      ? "View full profile →"
-                      : "Ver perfil completo →"}
+                    {ui.viewProfile}
                   </a>
                 </>
               ),
@@ -291,6 +299,6 @@ export default async function Home({
           ]}
         />
       </div>
-    </main>
+    </div>
   );
 }

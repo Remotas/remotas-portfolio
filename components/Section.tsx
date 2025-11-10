@@ -29,14 +29,10 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`${themeTokens.cardRadius} ${themeTokens.cardBorder} ${themeTokens.cardBg} ${themeTokens.cardPadding} ${className}`}
+      className={`${themeTokens.cardRadius} ${themeTokens.cardBorder} ${themeTokens.cardBg} ${themeTokens.cardPadding} ${className} transition-colors`}
     >
       {title ? (
-        <HeadingTag
-          className={`${headingClass} mb-4`}
-        >
-          {title}
-        </HeadingTag>
+        <HeadingTag className={`${headingClass} mb-4`}>{title}</HeadingTag>
       ) : null}
       {children}
     </section>

@@ -1,12 +1,12 @@
 // components/Hero.tsx
 import Image from "next/image";
+import { themeTokens } from "@/theme/tokens";
 
 type HeroProps = {
   lang: "es" | "en";
 };
 
 export default function Hero({ lang }: HeroProps) {
-  // usamos la foto que SÍ tienes en /public
   const photoSrc = "/avatar.jpg";
 
   const heroContent =
@@ -33,8 +33,10 @@ export default function Hero({ lang }: HeroProps) {
         };
 
   return (
-    <header className="rounded-3xl bg-slate-900/60 border border-slate-800/40 p-6 md:p-8 flex flex-col gap-6 md:flex-row md:items-center">
-      <div className="relative h-32 w-32 md:h-36 md:w-36 rounded-3xl overflow-hidden bg-slate-800 shrink-0">
+    <header
+      className={`rounded-3xl ${themeTokens.cardBg} ${themeTokens.cardBorder} p-6 md:p-8 flex flex-col gap-6 md:flex-row md:items-center transition-colors`}
+    >
+      <div className="relative h-32 w-32 md:h-36 md:w-36 rounded-3xl overflow-hidden bg-[var(--background)]/30 shrink-0">
         <Image
           src={photoSrc}
           alt={heroContent.badge}
@@ -44,13 +46,15 @@ export default function Hero({ lang }: HeroProps) {
         />
       </div>
       <div className="space-y-3">
-        <p className="text-xs font-semibold tracking-[0.3em] text-slate-300 uppercase">
+        <p className="text-xs font-semibold tracking-[0.3em] uppercase text-[var(--muted)]">
           {heroContent.name}
         </p>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[var(--foreground)]">
           {heroContent.headline}
         </h1>
-        <p className="text-slate-200/90 max-w-2xl">{heroContent.sub}</p>
+        <p className="text-[var(--foreground)]/80 max-w-2xl">
+          {heroContent.sub}
+        </p>
         <div className="flex flex-wrap gap-3 pt-1">
           <a
             href={heroContent.cvHref}
@@ -60,7 +64,7 @@ export default function Hero({ lang }: HeroProps) {
           </a>
           <a
             href={heroContent.projectsHref}
-            className="border border-slate-500 hover:border-slate-300 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors"
+            className="border border-[var(--border)] text-[var(--foreground)] px-5 py-2.5 rounded-full text-sm font-medium transition-colors hover:bg-[var(--background)]/5"
           >
             {heroContent.secondaryBtn}
           </a>

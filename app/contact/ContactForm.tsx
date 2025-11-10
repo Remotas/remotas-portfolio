@@ -57,18 +57,17 @@ export default function ContactForm() {
     }
   };
 
+  const inputClass =
+    "bg-[var(--surface)] border border-[var(--border)] rounded-lg px-3 py-2 text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-blue-500/60 transition";
+
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-5 text-slate-200"
+      className="space-y-5 text-[var(--foreground)]"
       aria-label="Formulario de contacto"
     >
-      {/* Nombre */}
       <div className="flex flex-col gap-2">
-        <label
-          className="text-sm font-medium text-slate-300"
-          htmlFor="contact-name"
-        >
+        <label className="text-sm font-medium" htmlFor="contact-name">
           Nombre
         </label>
         <input
@@ -78,17 +77,13 @@ export default function ContactForm() {
           required
           value={formData.name}
           onChange={handleChange("name")}
-          className="bg-slate-900/40 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition"
+          className={inputClass}
           placeholder="Tu nombre completo"
         />
       </div>
 
-      {/* Correo */}
       <div className="flex flex-col gap-2">
-        <label
-          className="text-sm font-medium text-slate-300"
-          htmlFor="contact-email"
-        >
+        <label className="text-sm font-medium" htmlFor="contact-email">
           Correo electrónico
         </label>
         <input
@@ -98,17 +93,13 @@ export default function ContactForm() {
           required
           value={formData.email}
           onChange={handleChange("email")}
-          className="bg-slate-900/40 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition"
+          className={inputClass}
           placeholder="tu@correo.com"
         />
       </div>
 
-      {/* Mensaje */}
       <div className="flex flex-col gap-2">
-        <label
-          className="text-sm font-medium text-slate-300"
-          htmlFor="contact-message"
-        >
+        <label className="text-sm font-medium" htmlFor="contact-message">
           Mensaje
         </label>
         <textarea
@@ -118,12 +109,11 @@ export default function ContactForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange("message")}
-          className="bg-slate-900/40 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition"
+          className={`${inputClass} resize-y`}
           placeholder="Escribe tu mensaje aquí..."
         />
       </div>
 
-      {/* Botón */}
       <button
         type="submit"
         disabled={loading}
@@ -132,13 +122,12 @@ export default function ContactForm() {
         {loading ? "Enviando..." : "Enviar mensaje"}
       </button>
 
-      {/* Estado de envío */}
       {success && (
-        <p className="text-sm text-green-400">
+        <p className="text-sm text-green-500">
           ✅ Mensaje enviado correctamente.
         </p>
       )}
-      {error && <p className="text-sm text-red-400">⚠️ {error}</p>}
+      {error && <p className="text-sm text-red-500">⚠️ {error}</p>}
     </form>
   );
 }

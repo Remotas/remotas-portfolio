@@ -10,8 +10,8 @@ const LINKS = {
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-slate-900/60 bg-slate-950/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 text-sm text-slate-200/85 md:flex-row md:items-center md:justify-between">
+    <footer className="mt-16 border-t border-[var(--border)] bg-[var(--background)] transition-colors">
+      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 text-sm text-[var(--foreground)]/85 md:flex-row md:items-center md:justify-between">
         {/* izquierda: firma */}
         <p className="leading-tight">
           © {CURRENT_YEAR} Melquiades Farías · Remotas Work · Hecho con Next.js
@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="flex flex-wrap gap-3">
           <a
             href={LINKS.email}
-            className="rounded-full bg-slate-900/40 px-4 py-1.5 text-xs font-medium text-slate-100 hover:bg-slate-800 transition"
+            className="rounded-full bg-[var(--surface)] px-4 py-1.5 text-xs font-medium text-[var(--foreground)] border border-[var(--border)] hover:opacity-90 transition"
           >
             Email
           </a>
@@ -30,7 +30,7 @@ export default function Footer() {
             href={LINKS.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-slate-900/40 px-4 py-1.5 text-xs font-medium text-slate-100 hover:bg-slate-800 transition"
+            className="rounded-full bg-[var(--surface)] px-4 py-1.5 text-xs font-medium text-[var(--foreground)] border border-[var(--border)] hover:opacity-90 transition"
           >
             LinkedIn
           </a>
@@ -38,7 +38,7 @@ export default function Footer() {
             href={LINKS.github}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-slate-900/40 px-4 py-1.5 text-xs font-medium text-slate-100 hover:bg-slate-800 transition"
+            className="rounded-full bg-[var(--surface)] px-4 py-1.5 text-xs font-medium text-[var(--foreground)] border border-[var(--border)] hover:opacity-90 transition"
           >
             GitHub
           </a>

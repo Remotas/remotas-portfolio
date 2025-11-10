@@ -1,23 +1,22 @@
+// components/ThemeProvider.tsx
 "use client";
 
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-type ThemeProviderProps = {
+type Props = {
   children: React.ReactNode;
 };
 
-export function ThemeProvider({ children }: ThemeProviderProps) {
+export default function ThemeProvider({ children }: Props) {
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="dark"
-      enableSystem
+      defaultTheme="dark" // tu sitio nace oscuro
+      enableSystem={true} // si quieres, puedes poner false aquí
       disableTransitionOnChange
     >
       {children}
     </NextThemesProvider>
   );
 }
-
-export default ThemeProvider;
