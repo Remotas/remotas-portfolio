@@ -7,7 +7,7 @@ type HeroProps = {
 };
 
 export default function Hero({ lang }: HeroProps) {
-  const photoSrc = "/avatar.jpg";
+  const photoSrc = "/avatar.svg";
 
   const heroContent =
     lang === "es"
@@ -36,12 +36,12 @@ export default function Hero({ lang }: HeroProps) {
     <header
       className={`rounded-3xl ${themeTokens.cardBg} ${themeTokens.cardBorder} p-6 md:p-8 flex flex-col gap-6 md:flex-row md:items-center transition-colors`}
     >
-      <div className="relative h-32 w-32 md:h-36 md:w-36 rounded-3xl overflow-hidden bg-[var(--background)]/30 shrink-0">
+      <div className="relative h-32 w-32 md:h-36 md:w-36 rounded-3xl bg-[var(--background)]/30">
         <Image
           src={photoSrc}
           alt={heroContent.badge}
           fill
-          className="object-cover"
+          className="object-contain object-center"
           sizes="144px"
         />
       </div>

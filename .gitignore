@@ -24,3 +24,6 @@ yarn-error.log*
 # editor
 .vscode/
 .DS_Store
+
+# Avatar backup local (no versionar)
+public/avatar_backup.jpg
