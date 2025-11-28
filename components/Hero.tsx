@@ -17,8 +17,10 @@ export default function Hero({ lang }: HeroProps) {
           sub: "14+ años de base técnica (telecom) + stack actual: HTML, CSS, JS, WordPress, Next.js. Trabajo remoto y documentado: entregables claros, código limpio y seguimiento.",
           primaryBtn: "Ver / descargar CV",
           secondaryBtn: "Ver proyectos",
+          servicesBtn: "Servicios →", // nuevo texto botón
           cvHref: "/cv",
           projectsHref: "/projects",
+          servicesHref: "/services", // nueva ruta
           badge: "Foto de Melquiades Farías",
         }
       : {
@@ -27,8 +29,10 @@ export default function Hero({ lang }: HeroProps) {
           sub: "14+ years of technical background (telecom) + modern web stack: HTML, CSS, JS, WordPress, Next.js. Remote-ready, documented and maintainable work.",
           primaryBtn: "View / download CV",
           secondaryBtn: "View projects",
+          servicesBtn: "Services →", // nuevo texto botón EN
           cvHref: "/cv?lang=en",
           projectsHref: "/projects?lang=en",
+          servicesHref: "/services?lang=en", // nueva ruta EN
           badge: "Photo of Melquiades Farías",
         };
 
@@ -67,6 +71,12 @@ export default function Hero({ lang }: HeroProps) {
             className="border border-[var(--border)] text-[var(--foreground)] px-5 py-2.5 rounded-full text-sm font-medium transition-colors hover:bg-[var(--background)]/5"
           >
             {heroContent.secondaryBtn}
+          </a>
+          <a
+            href={heroContent.servicesHref}
+            className="border border-[var(--border)] text-[var(--foreground)] px-5 py-2.5 rounded-full text-sm font-medium transition-colors hover:bg-[var(--background)]/5"
+          >
+            {heroContent.servicesBtn}
           </a>
         </div>
       </div>

@@ -14,6 +14,7 @@ const navLinks = [
   { href: "/certifications", label: "Certificaciones" },
   { href: "/cv", label: "CV" },
   { href: "/contact", label: "Contacto" },
+  { href: "/services", label: "Servicios" },
 ] as const;
 
 export default function Header() {
@@ -51,7 +52,7 @@ export default function Header() {
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                href={item.href as any}
                 className={`rounded-full px-3 py-1 text-sm font-medium transition ${
                   isActive
                     ? "bg-[rgba(255,255,255,0.08)] dark:bg-[rgba(15,23,42,0.6)]"
@@ -115,7 +116,7 @@ export default function Header() {
 
       {/* scroll nav mobile */}
       <div className="flex gap-2 overflow-x-auto px-4 pb-3 md:hidden">
-        {navLinks.map((item) => {
+cleao        {navLinks.map((item) => {
           const isActive =
             item.href === "/"
               ? pathname === "/"
@@ -123,7 +124,7 @@ export default function Header() {
           return (
             <Link
               key={item.href}
-              href={item.href}
+              href={item.href as any}
               className={`whitespace-nowrap rounded-full px-3 py-1 text-sm font-medium transition ${
                 isActive
                   ? "bg-[rgba(255,255,255,0.08)] dark:bg-[rgba(15,23,42,0.6)]"

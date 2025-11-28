@@ -54,8 +54,8 @@ export default function CvPage() {
       href: "/pdf/Melquiades_Farias_CV_Express.pdf",
     },
     {
-      name: "Cursos Venezuela (PDF)",
-      href: "/pdf/Cursos_Venezuela_Unificado_Melquiades_Farias.pdf",
+      name: "Otros Cursos (PDF)",
+      href: "/pdf/Otros_Cursos_Unificado_Melquiades_Farias.pdf",
     },
   ];
 
