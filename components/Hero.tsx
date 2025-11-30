@@ -1,5 +1,4 @@
 // components/Hero.tsx
-import Image from "next/image";
 import { themeTokens } from "@/theme/tokens";
 
 type HeroProps = {
@@ -7,48 +6,35 @@ type HeroProps = {
 };
 
 export default function Hero({ lang }: HeroProps) {
-  const photoSrc = "/avatar.svg";
-
   const heroContent =
     lang === "es"
       ? {
           name: "Melquiades Farías",
-          headline: "Desarrollador web · soporte digital y sistemas",
-          sub: "14+ años de base técnica (telecom) + stack actual: HTML, CSS, JS, WordPress, Next.js. Trabajo remoto y documentado: entregables claros, código limpio y seguimiento.",
+          headline: "Desarrollador web frontend · soporte digital & sistemas",
+          sub: "Base técnica en telecomunicaciones, redes y sistemas + stack actual: Next.js, React, TypeScript, Tailwind, Node.js y WordPress. Trabajo remoto documentado, mantenible y orientado al rendimiento.",
           primaryBtn: "Ver / descargar CV",
           secondaryBtn: "Ver proyectos",
           servicesBtn: "Servicios →", // nuevo texto botón
           cvHref: "/cv",
           projectsHref: "/projects",
           servicesHref: "/services", // nueva ruta
-          badge: "Foto de Melquiades Farías",
         }
       : {
           name: "Melquiades Farías",
-          headline: "Web developer · digital & systems support",
-          sub: "14+ years of technical background (telecom) + modern web stack: HTML, CSS, JS, WordPress, Next.js. Remote-ready, documented and maintainable work.",
+          headline: "Frontend web developer · digital & systems support",
+          sub: "Technical background in telecommunications, networks and systems + modern web stack: Next.js, React, TypeScript, Tailwind, Node.js and WordPress. Remote-ready, well-documented and performance-focused work.",
           primaryBtn: "View / download CV",
           secondaryBtn: "View projects",
           servicesBtn: "Services →", // nuevo texto botón EN
           cvHref: "/cv?lang=en",
           projectsHref: "/projects?lang=en",
           servicesHref: "/services?lang=en", // nueva ruta EN
-          badge: "Photo of Melquiades Farías",
         };
 
   return (
     <header
-      className={`rounded-3xl ${themeTokens.cardBg} ${themeTokens.cardBorder} p-6 md:p-8 flex flex-col gap-6 md:flex-row md:items-center transition-colors`}
+      className={`rounded-3xl ${themeTokens.cardBg} ${themeTokens.cardBorder} p-6 md:p-8 flex flex-col gap-6 transition-colors`}
     >
-      <div className="relative h-32 w-32 md:h-36 md:w-36 rounded-3xl bg-[var(--background)]/30">
-        <Image
-          src={photoSrc}
-          alt={heroContent.badge}
-          fill
-          className="object-contain object-center"
-          sizes="144px"
-        />
-      </div>
       <div className="space-y-3">
         <p className="text-xs font-semibold tracking-[0.3em] uppercase text-[var(--muted)]">
           {heroContent.name}
@@ -56,7 +42,7 @@ export default function Hero({ lang }: HeroProps) {
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[var(--foreground)]">
           {heroContent.headline}
         </h1>
-        <p className="text-[var(--foreground)]/80 max-w-2xl">
+        <p className="text-[var(--foreground)]/80 w-full text-justify">
           {heroContent.sub}
         </p>
         <div className="flex flex-wrap gap-3 pt-1">
