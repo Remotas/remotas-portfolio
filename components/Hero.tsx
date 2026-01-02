@@ -9,9 +9,9 @@ export default function Hero({ lang }: HeroProps) {
   const heroContent =
     lang === "es"
       ? {
-          name: "Melquiades Farías",
-          headline: "Desarrollador web frontend · soporte digital & sistemas",
-          sub: "Base técnica en telecomunicaciones, redes y sistemas + stack actual: Next.js, React, TypeScript, Tailwind, Node.js y WordPress. Trabajo remoto documentado, mantenible y orientado al rendimiento.",
+          name: "Remotas Work",
+          headline: "Desarrollo Web Full Stack & Sistemas",
+          sub: "Soluciones digitales completas: arquitectura, desarrollo, despliegue y soporte. Stack moderno con base sólida en sistemas y operación técnica.",
           primaryBtn: "Ver / descargar CV",
           secondaryBtn: "Ver proyectos",
           servicesBtn: "Servicios →", // nuevo texto botón
@@ -20,9 +20,9 @@ export default function Hero({ lang }: HeroProps) {
           servicesHref: "/services", // nueva ruta
         }
       : {
-          name: "Melquiades Farías",
-          headline: "Frontend web developer · digital & systems support",
-          sub: "Technical background in telecommunications, networks and systems + modern web stack: Next.js, React, TypeScript, Tailwind, Node.js and WordPress. Remote-ready, well-documented and performance-focused work.",
+          name: "Remotas Work",
+          headline: "Full Stack Web Development & Systems",
+          sub: "End-to-end digital solutions: architecture, development, deployment, and support. Modern web stack built on a strong systems and operations foundation.",
           primaryBtn: "View / download CV",
           secondaryBtn: "View projects",
           servicesBtn: "Services →", // nuevo texto botón EN

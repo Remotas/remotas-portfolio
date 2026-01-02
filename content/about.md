@@ -1,23 +1,17 @@
 ## ES
 
-Desarrollador web y técnico con base en **telecomunicaciones, redes y sistemas**. En los últimos años me he orientado al **desarrollo web frontend** con **Next.js, React, TypeScript, Tailwind y WordPress**, apoyado en APIs con **Node.js y MongoDB**.
+**Remotas Work** es una marca técnica orientada a la **creación de soluciones digitales completas**, combinando desarrollo web moderno con una base sólida en **telecomunicaciones, redes, sistemas y operación técnica**.
 
-Me gusta acompañar los proyectos con **documentación clara**, control de versiones (**Git/GitHub**) y despliegues en **Vercel / Cloudflare** u otros entornos cloud. Vengo de un entorno muy operativo (radio bases, redes móviles, energía, HFC), así que estoy acostumbrado a trabajar con incidencias, estabilidad técnica y trazabilidad.
+El trabajo cubre todo el ciclo del producto: desde la **definición funcional y la arquitectura inicial**, pasando por el **desarrollo frontend y full stack** con tecnologías como **Next.js, React, TypeScript, Tailwind, Node.js y WordPress**, hasta el **despliegue en entornos cloud**, la optimización de rendimiento y el **soporte en producción**.
 
-Lo que busco: integrarme en un equipo **remoto o híbrido (España / UE)** donde pueda aportar una mezcla de **base técnica + desarrollo web + soporte digital**. Suelo trabajar con entregables claros, revisar código con criterio ingenieril y usar **IA** como apoyo para QA y documentación.
-
-Disponibilidad: **remoto / mixto – España / UE**.  
-Movilidad: **permiso de conducción B (España, UE)**.
+A diferencia de enfoques puramente visuales o parciales, Remotas Work prioriza la **estabilidad, mantenibilidad y trazabilidad técnica**. Los proyectos se acompañan de **documentación clara**, control de versiones (**Git/GitHub**) y despliegues en plataformas como **Vercel y Cloudflare**, garantizando productos digitales preparados para crecer, mantenerse y operar de forma fiable a largo plazo.
 
 ---
 
 ## EN
 
-Web developer with a background in **telecommunications, networks and systems**. In recent years I’ve focused on **frontend web development** with **Next.js, React, TypeScript, Tailwind and WordPress**, supported by APIs built with **Node.js and MongoDB**.
+**Remotas Work** is a technical brand focused on delivering **end-to-end digital solutions**, combining modern web development with a strong foundation in **telecommunications, systems, networks, and technical operations**.
 
-I like to ship projects with **clear documentation**, **Git/GitHub** version control and deployments on **Vercel / Cloudflare** or similar cloud environments. I come from a very operational world (radio base stations, mobile networks, power systems, HFC), so I’m used to working with incidents, technical stability and traceability.
+The work covers the full product lifecycle: from **initial definition and architecture**, through **frontend and full stack development** using technologies such as **Next.js, React, TypeScript, Tailwind, Node.js, and WordPress**, to **cloud deployment**, performance optimization, and **production support**.
 
-What I’m looking for: to join a **remote or hybrid IT team (Spain / EU)** where I can bring a combination of **technical background + web development + digital support**. I’m used to working with clear deliverables, reviewing code with an engineering mindset, and using **AI** as an assistant for QA and documentation.
-
-Availability: **remote / hybrid – Spain / EU**.  
-Mobility: **Category B driving licence (Spain, EU)**.
+Unlike purely visual or partial approaches, Remotas Work prioritizes **stability, maintainability, and technical traceability**. Projects are supported by **clear documentation**, version control (**Git/GitHub**), and deployments on platforms like **Vercel and Cloudflare**, resulting in digital products designed to scale, remain stable, and operate reliably over time.

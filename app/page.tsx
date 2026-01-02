@@ -99,7 +99,7 @@ export default async function Home({
       stackTitle: "Stack principal",
       stackDesc:
         "Tecnologías que uso más en proyectos personales y de clientes.",
-      aboutTitle: "Sobre mí",
+      aboutTitle: "Sobre Remotas Work",
       philosophyTitle: "Filosofía de trabajo",
       skillsTitle: "Habilidades",
       notesTitle: "Notas rápidas",
@@ -116,7 +116,7 @@ export default async function Home({
         "Remote / hybrid · Spain / EU · PDF deliverables · Clear documentation.",
       stackTitle: "Main stack",
       stackDesc: "Technologies I use most in personal and client projects.",
-      aboutTitle: "About me",
+      aboutTitle: "About Remotas Work",
       philosophyTitle: "Work philosophy",
       skillsTitle: "Skills",
       notesTitle: "Quick notes",
