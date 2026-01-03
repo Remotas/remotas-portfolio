@@ -1,5 +1,4 @@
 // components/Timeline.tsx
-import React from "react";
 import { themeTokens } from "@/theme/tokens";
 
 export type TimelineItem = {
@@ -13,7 +12,7 @@ export interface TimelineProps {
   items: TimelineItem[] | Record<string, TimelineItem>;
 }
 
-export default function Timeline({ items }: TimelineProps): JSX.Element {
+export default function Timeline({ items }: TimelineProps) {
   const list: TimelineItem[] = Array.isArray(items)
     ? items
     : Object.values(items ?? {});
@@ -30,19 +29,19 @@ export default function Timeline({ items }: TimelineProps): JSX.Element {
           </h3>
 
           {it.role ? (
-            <p className="text-xs text-[var(--foreground)]/70 mt-1">
+            <p className="mt-1 text-xs text-[var(--foreground)]/70">
               {it.role}
             </p>
           ) : null}
 
           {it.period ? (
-            <p className="text-xs text-[var(--muted)] mt-1">{it.period}</p>
+            <p className="mt-1 text-xs text-[var(--muted)]">{it.period}</p>
           ) : null}
 
           {it.bullets ? (
             <ul className="mt-2 list-disc ms-5 space-y-1 text-xs text-[var(--foreground)]/80">
               {(Array.isArray(it.bullets) ? it.bullets : [it.bullets]).map(
-                (b, i: number) => {
+                (b, i) => {
                   const bulletText =
                     typeof b === "string"
                       ? b

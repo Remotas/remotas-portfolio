@@ -25,14 +25,16 @@
     "react-dom": "19.2.3",
     "remark-gfm": "^4.0.0",
     "resend": "^6.4.1",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2",
     "yaml": "^2.5.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
-    "@types/react": "^18.3.26",
-    "@types/react-dom": "^18.3.7",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "baseline-browser-mapping": "^2.9.11",
     "js-yaml-loader": "^1.2.2",
     "svgo": "^4.0.0"
   }
