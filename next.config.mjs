@@ -10,7 +10,6 @@ const withMDX = createMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: { typedRoutes: true },
   pageExtensions: ["ts", "tsx", "mdx"],
   webpack: (config) => {
     // Permitir importar archivos .yml / .yaml
@@ -24,7 +23,7 @@ const nextConfig = {
   // output: "export",
   // images: { unoptimized: true },
   // basePath: process.env.NEXT_BASE_PATH || "",
-  // assetPrefix: process.env.NEXT_ASSET_PREFIX || ""
+  // assetPrefix: process.env.NEXT_ASSET_PREFIX || "",
 };
 
 export default withMDX(nextConfig);
